@@ -12,14 +12,21 @@ export default function Projects(): JSX.Element {
       title: "DataFlowCheck",
       description: "End-to-end data validation pipeline with observability and alerts.",
       tech: ["TypeScript", "Node", "Postgres", "React"],
-      github: "#",
+      github: "https://github.com/adampharrels/DataFlowCheck",
     },
     {
-      id: "dailythink",
-      title: "DailyThink — micro reflection app",
-      description: "Habit-forming journaling with lightweight NLP and mood tracking.",
+      id: "CryptoWallet",
+      title: "CryptoWallet",
+      description: "Secure and user-friendly cryptocurrency wallet application.",
       tech: ["React", "TypeScript", "Tailwind"],
-      github: "#",
+      github: "https://adampharrels.github.io/CryptoWalletFrontend/",
+    },
+    {
+      id: "RoombookingSystem",
+      title: "Room Booking System",
+      description: "A web application for booking and managing meeting rooms.",
+      tech: ["Java", "SpringBoot", "HTML", "CSS"],
+      github: "https://github.com/adampharrels/ASD_Project",
     },
   ];
 
@@ -56,7 +63,7 @@ export default function Projects(): JSX.Element {
             Projects
           </a>
           <a href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
-            100 Goals
+            List 100
           </a>
           <button
             onClick={() => setLight(!light)}

@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
             Projects
           </a>
           <a href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
-            100 Things
+            List 100
           </a>
           <button
             onClick={() => setLight(!light)}
@@ -50,7 +50,7 @@ export default function Home(): JSX.Element {
         >
           <h2 className="text-4xl font-extrabold">About Me</h2>
           <p className="mt-4 opacity-80 leading-relaxed">
-            I'm Adam — CS student from Sydney, Australia.
+            I'm Adam - CS student from Sydney, Australia.
             I like building tools.
           </p>
 

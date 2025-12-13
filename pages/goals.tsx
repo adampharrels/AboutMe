@@ -33,7 +33,7 @@ export default function Goals(): JSX.Element {
             href="/goals"
             className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold"
           >
-            100 Goals
+            List 100
           </a>
           <button
             onClick={() => setLight(!light)}
