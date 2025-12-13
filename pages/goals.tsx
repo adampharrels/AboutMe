@@ -20,7 +20,7 @@ export default function Goals(): JSX.Element {
       <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Adam Nguyen</h1>
-          <p className="text-sm opacity-70">Law-tech hybrid · Full-stack</p>
+          <p className="text-sm opacity-70">CS Student · Full-stack</p>
         </div>
         <nav className="flex items-center gap-4">
           <a href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">

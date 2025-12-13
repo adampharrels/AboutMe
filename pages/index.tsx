@@ -19,8 +19,8 @@ export default function Home(): JSX.Element {
       {/* Header */}
       <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Adam Nguyen</h1>
-          <p className="text-sm opacity-70">Law-tech hybrid · Full-stack</p>
+          <h1 className="text-3xl font-bold">Adam.</h1>
+          <p className="text-sm opacity-70">CS Student· Full-stack</p>
         </div>
         <nav className="flex items-center gap-4">
           <a href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
@@ -50,15 +50,14 @@ export default function Home(): JSX.Element {
         >
           <h2 className="text-4xl font-extrabold">About Me</h2>
           <p className="mt-4 opacity-80 leading-relaxed">
-            I'm Adam — a hybrid thinker moving between legal systems and software engineering.
-            I build tools that help people think smarter, ship faster, and avoid chaos.
+            I'm Adam — CS student from Sydney, Australia.
+            I like building tools.
           </p>
 
           <h3 className="mt-6 font-semibold text-lg">Work Experience</h3>
           <ul className="mt-2 space-y-2 opacity-80 text-sm">
-            <li>• IA Group — Legal Tech Intern</li>
-            <li>• Yarraland Real Estate — Admin + Ops Tech</li>
-            <li>• Nexstox — SWE Intern (Incoming)</li>
+            <li>• NexStox - Software Engineering Intern</li>
+            <li>• TMA Solutions - Software Engineering Intern</li>
           </ul>
 
           <h3 className="mt-6 font-semibold text-lg">Skills</h3>
@@ -76,9 +75,8 @@ export default function Home(): JSX.Element {
 
         <aside className="p-6 rounded-xl border border-slate-700/40 text-sm opacity-80">
           <h4 className="font-semibold">Currently</h4>
-          <p>• Building DailyThink</p>
+          <p>• Building a live regulation tracker</p>
           <p>• Studying C++ + DSA</p>
-          <p>• Pursuing JD pathway</p>
         </aside>
       </section>
 
