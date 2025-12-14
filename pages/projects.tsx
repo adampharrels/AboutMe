@@ -30,6 +30,13 @@ export default function Projects(): JSX.Element {
       tech: ["Java", "SpringBoot", "HTML", "CSS"],
       github: "https://github.com/adampharrels/ASD_Project",
     },
+    {
+      id: "nutrisnap",
+      title: "NutriSnap",
+      description: "A web application for tracking and managing nutritional intake.",
+      tech: ["Java", "SpringBoot", "Kotlin"],
+      github: "https://github.com/adampharrels/NutriSnap",
+    }
   ];
 
   const filtered = useMemo(() => {
@@ -59,7 +66,7 @@ export default function Projects(): JSX.Element {
         </div>
         <nav className="flex items-center gap-4">
                   <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-                    About
+                    Background
                   </Link>
                   <Link href="/work" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
                     Work

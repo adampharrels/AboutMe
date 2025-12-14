@@ -26,7 +26,7 @@ export default function Goals(): JSX.Element {
         </div>
         <nav className="flex items-center gap-4">
                   <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-                    About
+                    Background
                   </Link>
                   <Link href="/work" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
                     Work

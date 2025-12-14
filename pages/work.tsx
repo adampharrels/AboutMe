@@ -13,7 +13,7 @@ export default function WorkPage() {
     {
       company: "NexStox",
       role: "Software Engineering Intern",
-      period: "2025",
+      period: "01/2026 - Present",
       bullets: [
         "Built and shipped production frontend features using React and TypeScript",
         "Worked closely with backend APIs and real trading data",
@@ -24,13 +24,13 @@ export default function WorkPage() {
     {
       company: "TMA Solutions",
       role: "Software Engineering Intern",
-      period: "2024",
+      period: "10/2025 - 01/2026",
       bullets: [
         "Developed internal tools and client-facing features",
-        "Collaborated in an Agile team with designers and senior engineers",
+        "Improved the recruitment tool",
         "Focused on writing clean, maintainable, and well-documented code",
       ],
-      stack: ["JavaScript", "React", "Agile"],
+      stack: ["JavaScript", "TypeScript", "Angular CLI", "Hono", "Next.js", "React", "Agile"],
     },
   ];
 
@@ -54,7 +54,7 @@ export default function WorkPage() {
         </div>
         <nav className="flex items-center gap-4">
           <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-            About
+            Background
           </Link>
           <Link href="/work" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
             Work
@@ -133,7 +133,7 @@ export default function WorkPage() {
               <h3 className="text-xl font-semibold mb-1">Want more detail?</h3>
               <p className="text-zinc-400">Happy to walk through my work or share code samples.</p>
             </div>
-            <Button variant="contained" color="success" href="mailto:adam.nguyen@email.com" sx={{ textTransform: 'none' }}>
+            <Button variant="contained" color="success" href="mailto:adamnguyxn.au@email.com" sx={{ textTransform: 'none' }}>
               Get in touch
             </Button>
           </CardContent>
