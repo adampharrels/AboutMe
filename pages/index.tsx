@@ -72,23 +72,22 @@ export default function Home(): JSX.Element {
           <h2 className="text-4xl font-extrabold">Background</h2>
           <p className="mt-4 opacity-80 leading-relaxed">
             I’m a Computer Science student with one foot in technology and the other in law. 
-            I’m drawn to complex systems - whether that’s software, regulation, 
+            I’m drawn to complex systems, whether that’s software, regulation, 
             or how people navigate institutions when they need help the most.
-          </p>
+            </p>
 
           <p className="mt-4 opacity-80 leading-relaxed">
             I care about building tools that reduce friction, 
-            scale cleanly, and actually get used. I think a lot about incentives, 
-            access, and failure modes — how systems behave when the stakes are high and assumptions break. 
+            scale cleanly, and actually get used.
             Alongside software, I study law to better understand how rules, responsibility, 
-            and decision-making shape real outcomes.
+            and decision-making shape real outcomes - and to be useful when it matters.
           </p>
 
           <p className="mt-4 opacity-80 leading-relaxed">
-            In my whole life I’m inspired by my parents and my brother, 
-            who shaped how I think about responsibility and resilience, 
+            I’m inspired by my parents and my brother, 
+            who shaped my sense of ethics, responsibility and resilience, 
             and by Anthony Bourdain, whose curiosity and honesty resonate with me. 
-            My ambitions don’t fit neatly into a single box - I see that as an edge.
+            My ambitions don’t fit neatly into a single box and I see that as an edge.
           </p>
 
           <h3 className="mt-6 font-semibold text-lg">Work Experience</h3>

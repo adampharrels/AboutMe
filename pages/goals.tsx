@@ -50,6 +50,13 @@ export default function Goals(): JSX.Element {
       <section className="max-w-4xl mx-auto p-6 py-12">
         <div className="mb-8">
           <h2 className="text-4xl font-extrabold mb-2">100 Goals I Wanna Do</h2>
+          <p className="text-sm opacity-70">
+            A list of 100 things I want to achieve in my life, 
+            spanning personal, professional, and adventurous aspirations.
+          </p>
+          <p className="text-sm opacity-70">
+            I aim to achieve everything in the list and do not sacrifice my values along the way.
+          </p>
         </div>
 
         {/* Goals List (read-only) */}

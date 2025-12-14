@@ -26,9 +26,9 @@ export default function WorkPage() {
       role: "Software Engineering Intern",
       period: "10/2025 - 01/2026",
       bullets: [
-        "Developed internal tools and client-facing features",
-        "Improved the recruitment tool",
-        "Focused on writing clean, maintainable, and well-documented code",
+        "Designed and developed an internal tool to manage employee data",
+        "Improved the internal internship recruitment tool",
+        "Implemented the voice input feature of an AI-powered chatbot that recognises Mandarin and Singaporean English",
       ],
       stack: ["JavaScript", "TypeScript", "Angular CLI", "Hono", "Next.js", "React", "Agile"],
     },
