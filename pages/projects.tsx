@@ -1,9 +1,10 @@
-import { useState, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
+import { ThemeContext } from "../context/theme";
 
 export default function Projects(): JSX.Element {
-  const [light, setLight] = useState(false);
+  const { light, setLight } = useContext(ThemeContext);
   const [query, setQuery] = useState("");
 
   const projects = [

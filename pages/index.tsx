@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useContext } from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import { Github, Linkedin } from "lucide-react";
+import { ThemeContext } from "../context/theme";
 
 export default function Home(): JSX.Element {
-  const [light, setLight] = useState(false);
+  const { light, setLight } = useContext(ThemeContext);
 
   return (
     <div
@@ -78,6 +84,63 @@ export default function Home(): JSX.Element {
           <p>• Building a live regulation tracker</p>
           <p>• Studying C++ + DSA</p>
         </aside>
+      </section>
+
+      <section className="max-w-6xl mx-auto p-6 py-16 grid md:grid-cols-3 gap-10">
+        <Card
+          sx={{
+            bgcolor: 'transparent',
+            border: 'none',
+            boxShadow: 'none',
+            color: 'inherit',
+            fontFamily: 'inherit'
+          }}
+        >
+          <CardContent sx={{ p: 3, color: 'inherit', fontFamily: 'inherit' }}>
+            <h3 className="text-xl font-semibold mb-2">Contact</h3>
+            <p className="text-zinc-400 mb-4">
+              Have a project, internship, or something interesting? Let’s align.
+            </p>
+            <div className="flex flex-wrap gap-3 items-center md:flex-nowrap">
+              <Button
+                variant="contained"
+                color="success"
+                href="mailto:adam.nguyen@email.com"
+                sx={{ textTransform: 'none', maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+              >
+                adam.nguyen@email.com
+              </Button>
+              <IconButton
+                aria-label="github"
+                href="#"
+                color="inherit"
+                sx={{
+                  transition: 'transform 180ms ease, color 180ms ease',
+                  '&:hover': {
+                    transform: 'translateY(-3px) scale(1.12)',
+                    color: '#10B981'
+                  }
+                }}
+              >
+                <Github />
+              </IconButton>
+              <IconButton
+                aria-label="linkedin"
+                href="#"
+                color="inherit"
+                sx={{
+                  transition: 'transform 180ms ease, color 180ms ease',
+                  '&:hover': {
+                    transform: 'translateY(-3px) scale(1.12)',
+                    color: '#0A66C2'
+                  }
+                }}
+              >
+                <Linkedin />
+              </IconButton>
+            </div>
+          </CardContent>
+        </Card>
       </section>
 
       <footer className="mt-12 py-6 text-center opacity-60 text-sm">

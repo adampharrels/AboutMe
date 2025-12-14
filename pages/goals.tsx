@@ -1,9 +1,10 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useContext } from "react";
 import goalsData from "../data/goals.json";
+import { ThemeContext } from "../context/theme";
 
 export default function Goals(): JSX.Element {
-  const [light, setLight] = useState(false);
+  const { light, setLight } = useContext(ThemeContext);
   const goals: string[] = goalsData;
 
   return (
