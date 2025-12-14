@@ -21,26 +21,29 @@ export default function Goals(): JSX.Element {
       {/* Header */}
       <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Adam Nguyen</h1>
+          <h1 className="text-3xl font-bold">Adam.</h1>
           <p className="text-sm opacity-70">CS Student · Full-stack</p>
         </div>
         <nav className="flex items-center gap-4">
-          <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-            About
-          </Link>
-          <Link href="/projects" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-            Projects
-          </Link>
-          <Link href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
-            List 100
-          </Link>
-          <button
-            onClick={() => setLight(!light)}
-            className="px-3 py-1 border rounded-md text-sm"
-          >
-            {light ? "Dark" : "Light"} Mode
-          </button>
-        </nav>
+                  <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
+                    About
+                  </Link>
+                  <Link href="/work" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
+                    Work
+                  </Link>
+                  <Link href="/projects" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
+                    Projects
+                  </Link>
+                  <Link href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
+                    List 100
+                  </Link>
+                  <button
+                    onClick={() => setLight(!light)}
+                    className="px-3 py-1 border rounded-md text-sm"
+                  >
+                    {light ? "Dark" : "Light"}
+                  </button>
+                </nav>
       </header>
 
       {/* Main Content */}

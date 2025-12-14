@@ -33,6 +33,9 @@ export default function Home(): JSX.Element {
           <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
             About
           </Link>
+          <Link href="/work" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
+            Work
+          </Link>
           <Link href="/projects" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
             Projects
           </Link>
