@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import { useContext, useMemo, useState } from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import { ThemeContext } from "../context/theme";
