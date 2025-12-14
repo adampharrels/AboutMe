@@ -105,14 +105,14 @@ export default function Home(): JSX.Element {
               <Button
                 variant="contained"
                 color="success"
-                href="mailto:adam.nguyen@email.com"
+                href="mailto:adamnguyxn.au@email.com"
                 sx={{ textTransform: 'none', maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
               >
-                adam.nguyen@email.com
+                adamnguyxn.au@email.com
               </Button>
               <IconButton
                 aria-label="github"
-                href="#"
+                href="https://github.com/adampharrels"
                 color="inherit"
                 sx={{
                   transition: 'transform 180ms ease, color 180ms ease',
@@ -126,7 +126,7 @@ export default function Home(): JSX.Element {
               </IconButton>
               <IconButton
                 aria-label="linkedin"
-                href="#"
+                href="https://www.linkedin.com/in/adam-nguyen-2517222a0/"
                 color="inherit"
                 sx={{
                   transition: 'transform 180ms ease, color 180ms ease',
