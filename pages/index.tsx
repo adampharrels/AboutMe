@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import Head from "next/head";
+import Link from 'next/link';
 import { motion } from "framer-motion";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -29,15 +30,15 @@ export default function Home(): JSX.Element {
           <p className="text-sm opacity-70">CS Student· Full-stack</p>
         </div>
         <nav className="flex items-center gap-4">
-          <a href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
+          <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
             About
-          </a>
-          <a href="/projects" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
+          </Link>
+          <Link href="/projects" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
             Projects
-          </a>
-          <a href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
+          </Link>
+          <Link href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
             List 100
-          </a>
+          </Link>
           <button
             onClick={() => setLight(!light)}
             className="px-3 py-1 border rounded-md text-sm"
