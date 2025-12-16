@@ -12,10 +12,14 @@ import { ThemeContext } from "../context/theme";
 export default function Home(): JSX.Element {
   const { light, setLight } = useContext(ThemeContext);
   const skills = [
+    "Python",
     "TypeScript",
     "React",
     "Next.js",
     "Node.js",
+    "Express.js",
+    "Hono",
+    "Angular",
     "PostgreSQL",
     "C++",
     "Tailwind",
