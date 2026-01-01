@@ -22,9 +22,9 @@ export default function WorkPage() {
       stack: ["React", "TypeScript", "Next.js", "REST APIs"],
     },
     {
-      company: "TMA Solutions",
+      company: "TMA Solutions Australia",
       role: "Software Engineering Intern",
-      period: "10/2025 - 01/2026",
+      period: "7/2025 - 10/2025",
       bullets: [
         "Designed and developed an internal tool to manage employee and data",
         "Improved the internal internship recruitment tool UI",
