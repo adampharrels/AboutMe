@@ -7,17 +7,16 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.BASE_PATH || '
  */
 const useExport = process.env.NEXT_EXPORT === 'true';
 
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  // enable static export only when NEXT_EXPORT=true
-  ...(useExport ? { output: 'export' } : {}),
+  output: 'export',
+  basePath: process.env.BASE_PATH || '',
+  assetPrefix: process.env.BASE_PATH || '',
   images: {
     unoptimized: true,
   },
-  // only include basePath/assetPrefix when provided to avoid serving 404 at '/'
-  ...(basePath ? { basePath, assetPrefix: basePath } : {}),
-  // ensure exported pages are written into folders (e.g. /work/index.html)
-  ...(useExport ? { trailingSlash: true } : {}),
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
