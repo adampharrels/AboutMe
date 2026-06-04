@@ -11,13 +11,25 @@ import { ThemeContext } from "../context/theme";
 export default function WorkPage() {
   const roles = [
     {
+      company: "StevTech",
+      role:  "Data Engineering Intern",
+      period: "11/2024 - 01/2025",
+      bullets: [
+        "Reduced drone imagery preparation time from hours to seconds by building a Python data pipeline that processes multi-sensor datasets up to ∼50GB per batch for downstream computer vision weed-detection models.",
+        "Improved pipeline extensibility by designing a base class architecture that standardised how new drone and sensor types are integrated without modifying existing processing logic.",
+        "Increased metadata consistency across drone payloads by developing sensor-specific processors that standardised timestamps, coordinates, units, and field names into a unified schema.",
+      ],
+      stack: ["Tech: Python, pandas, exiftool, rasterio, FastAPI, SQLite"]
+    },
+    {
       company: "NexStox",
       role: "Software Engineering Intern",
       period: "01/2026 - Present",
       bullets: [
-        "Built and shipped production frontend features using React and TypeScript",
-        "Worked closely with backend APIs and real trading data",
-        "Optimised UI flows with a focus on speed, clarity, and correctness",
+        "Owned the migration of a high-traffic game from Next.js to Vite, reducing frontend build time by ∼40–60% and improving local development speed",
+        "Developed responsive trading interfaces across NXMarket and NexStox, including Staking, Order History, Funding, and Stake wallet pages, improving usability across desktop and mobile platforms",
+        "Shipped fintech product changes across short engineering, product, and business iteration cycles",
+        "Built admin dashboard tooling that cut publishing time by ∼50%, reducing dependency on frontend engineers.",
       ],
       stack: ["React", "TypeScript", "Next.js", "REST APIs"],
     },
@@ -26,10 +38,10 @@ export default function WorkPage() {
       role: "Software Engineering Intern",
       period: "7/2025 - 10/2025",
       bullets: [
-        "Designed and developed an internal tool to manage employee and data",
-        "Improved the internal internship recruitment tool UI",
-        "Developed a coding assistant AI tool",
-        "Developed the voice input feature of an AI-powered chatbot that recognises Mandarin and Singaporean English",
+        "Improved internal workforce planning by building systems for skills tracking, resource allocation, and project data analysis.",
+        "Reduced duplicated frontend logic by ∼30–40% by refactoring Angular data tables with 1,000+ records into reusable components.",
+        "Reduced manual query handling by ∼40% by developing a multilingual voice-input module with 90% recognition accuracy in testing.",
+        "Improved system reliability by debugging performance issues and validating fixes through structured testing during Agile sprint cycles."
       ],
       stack: ["JavaScript", "TypeScript", "Angular CLI", "Hono", "Next.js", "NestJS", "React", "Agile"],
     },
