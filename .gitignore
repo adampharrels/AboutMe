@@ -7,3 +7,4 @@ node_modules
 .DS_Store
 admin-local
 out
+tsconfig.tsbuildinfo
