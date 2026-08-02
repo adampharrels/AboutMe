@@ -1,65 +1,86 @@
-import { useContext } from "react";
-import { CheckCircle2, Circle } from "lucide-react";
+import { CheckCircle2, Circle, Loader2 } from "lucide-react";
 import goalsData from "../data/goals.json";
-import Layout, { cx } from "../components/Layout";
-import { ThemeContext } from "../context/theme";
+import Layout from "../components/Layout";
+import SectionHeading from "../components/SectionHeading";
+
+type GoalStatus = "Completed" | "In progress" | "Not started";
+
+function normaliseGoal(
+  goal: string,
+): { text: string; status: GoalStatus } | null {
+  if (/^Thing \d+$/.test(goal)) return null;
+
+  if (goal.startsWith("done:")) {
+    return { text: goal.replace("done:", "").trim(), status: "Completed" };
+  }
+
+  if (goal.startsWith("progress:")) {
+    return {
+      text: goal.replace("progress:", "").trim(),
+      status: "In progress",
+    };
+  }
+
+  return { text: goal, status: "Not started" };
+}
+
+const statusIcon = {
+  Completed: CheckCircle2,
+  "In progress": Loader2,
+  "Not started": Circle,
+};
 
 export default function Goals(): JSX.Element {
-  const { light } = useContext(ThemeContext);
-  const goals: string[] = goalsData.filter((goal) => !/^Thing \d+$/.test(goal));
-  const completedCount = goals.filter((goal) => goal.includes("done:")).length;
+  const goals = goalsData
+    .map(normaliseGoal)
+    .filter((goal): goal is NonNullable<typeof goal> => Boolean(goal));
+  const completedCount = goals.filter(
+    (goal) => goal.status === "Completed",
+  ).length;
 
   return (
     <Layout
-      title="100 Goals - Adam Nguyen"
-      description="Adam Nguyen's personal list of goals across study, travel, fitness, family, craft, and values."
+      title="Life List"
+      description="Adam Nguyen's growing life list of experiences, milestones and challenges."
     >
-      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:py-20">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">List 100</p>
-          <h1 className="mt-3 text-5xl font-semibold leading-tight tracking-normal">A public ledger for ambition and values.</h1>
-          <p className={cx("mt-5 text-lg leading-8", light ? "text-zinc-700" : "text-slate-300")}>
-            Goals I want to earn across work, study, family, travel, fitness, craft, and faith. The last one
-            is the rule that governs the rest: achieve the list without sacrificing my values along the way.
-          </p>
-        </div>
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
+        <SectionHeading
+          eyebrow="Life List"
+          title="A growing list of experiences, milestones and challenges."
+          description="A personal page, not the main portfolio pitch. It keeps track of things I hope to pursue throughout my life."
+        />
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <div className={cx("rounded-lg border p-5", light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]")}>
-            <p className="text-3xl font-semibold text-emerald-500">{goals.length}</p>
-            <p className={cx("mt-2 text-sm", light ? "text-zinc-600" : "text-slate-400")}>published goals</p>
-          </div>
-          <div className={cx("rounded-lg border p-5", light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]")}>
-            <p className="text-3xl font-semibold text-emerald-500">{completedCount}</p>
-            <p className={cx("mt-2 text-sm", light ? "text-zinc-600" : "text-slate-400")}>already completed</p>
-          </div>
-          <div className={cx("rounded-lg border p-5", light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]")}>
-            <p className="text-3xl font-semibold text-emerald-500">1</p>
-            <p className={cx("mt-2 text-sm", light ? "text-zinc-600" : "text-slate-400")}>non-negotiable value rule</p>
-          </div>
+          <Stat
+            value={goals.length.toString()}
+            label="real entries published"
+          />
+          <Stat value={completedCount.toString()} label="completed" />
+          <Stat value="1" label="values rule at the end" />
         </div>
 
         <ol className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {goals.map((goal, index) => {
-            const completed = goal.includes("done:");
-            const cleanGoal = goal.replace("done:", "").trim();
-
+            const Icon = statusIcon[goal.status];
             return (
               <li
-                key={`${goal}-${index}`}
-                className={cx(
-                  "grid grid-cols-[2rem_1fr] gap-3 rounded-lg border p-4",
-                  light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
-                )}
+                key={`${goal.text}-${index}`}
+                className="grid grid-cols-[2.25rem_1fr] gap-3 border border-white/10 bg-white/[0.035] p-4"
               >
-                <div className="pt-0.5 text-emerald-500">
-                  {completed ? <CheckCircle2 size={20} /> : <Circle size={20} />}
+                <div className="pt-0.5 text-emerald-300">
+                  <Icon size={20} aria-hidden="true" />
                 </div>
                 <div>
-                  <p className={cx("text-xs", light ? "text-zinc-500" : "text-slate-500")}>
+                  <p className="text-xs text-slate-500">
                     {(index + 1).toString().padStart(2, "0")}
                   </p>
-                  <p className={cx("mt-1 text-sm leading-6", completed && "line-through opacity-70")}>{cleanGoal}</p>
+                  <p className="mt-1 text-sm leading-6 text-slate-200">
+                    {goal.text}
+                  </p>
+                  <p className="mt-2 text-xs font-medium text-slate-400">
+                    <span className="sr-only">Status: </span>
+                    {goal.status}
+                  </p>
                 </div>
               </li>
             );
@@ -67,5 +88,14 @@ export default function Goals(): JSX.Element {
         </ol>
       </section>
     </Layout>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className=" border border-white/10 bg-white/[0.035] p-5">
+      <p className="text-3xl font-semibold text-emerald-300">{value}</p>
+      <p className="mt-2 text-sm text-slate-400">{label}</p>
+    </div>
   );
 }

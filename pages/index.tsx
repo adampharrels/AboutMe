@@ -1,216 +1,205 @@
 import Link from "next/link";
-import { ArrowRight, Github, Linkedin, Mail, MapPin } from "lucide-react";
-import Layout, { cx } from "../components/Layout";
-import { focusAreas, metrics, profile, projects, roles, skills } from "../data/portfolio";
-import { useContext } from "react";
-import { ThemeContext } from "../context/theme";
+import { ArrowRight, Github, Linkedin, MapPin } from "lucide-react";
+import CallToAction from "../components/CallToAction";
+import ExperienceCard from "../components/ExperienceCard";
+import Layout from "../components/Layout";
+import ProjectCard from "../components/ProjectCard";
+import SectionHeading from "../components/SectionHeading";
+import TechnologyTags from "../components/TechnologyTags";
+import {
+  capabilityGroups,
+  experiences,
+  featuredProjects,
+  profile,
+  proofPoints,
+} from "../data/portfolio";
 
 export default function Home(): JSX.Element {
-  const { light } = useContext(ThemeContext);
-  const featuredProjects = projects.slice(0, 3);
-
   return (
-    <Layout
-      title="Adam Nguyen - Portfolio"
-      description="Portfolio for Adam Nguyen, a Computer Science student and full-stack engineer working across data pipelines, fintech interfaces, and internal tools."
-    >
-      <section className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.25fr_0.75fr] lg:py-24">
+    <Layout>
+      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.25fr_0.75fr] lg:py-24">
         <div>
-          <div
-            className={cx(
-              "mb-6 inline-flex items-center gap-2 rounded-md border px-3 py-2 text-sm",
-              light
-                ? "border-zinc-200 bg-white text-zinc-700"
-                : "border-white/10 bg-white/[0.04] text-slate-300"
-            )}
-          >
-            <MapPin size={15} />
+          <p className="inline-flex items-center gap-2 border border-white/10 bg-[#12151b] px-3 py-2 text-sm text-slate-300">
+            <MapPin size={15} aria-hidden="true" />
             {profile.location}
-          </div>
-
-          <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-normal sm:text-6xl">
-            Building reliable software for messy, high-stakes systems.
-          </h1>
-          <p className={cx("mt-6 max-w-2xl text-lg leading-8", light ? "text-zinc-700" : "text-slate-300")}>
+          </p>
+          <p className="mt-6 max-w-3xl text-xl leading-9 text-slate-200 sm:text-2xl">
             {profile.summary}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 rounded-md bg-emerald-500 px-4 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-400"
+              className="inline-flex items-center gap-2 bg-emerald-400 px-4 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-300"
             >
-              View projects
-              <ArrowRight size={17} />
+              View Projects
+              <ArrowRight size={17} aria-hidden="true" />
             </Link>
             <a
-              href={`mailto:${profile.email}`}
-              className={cx(
-                "inline-flex items-center gap-2 rounded-md border px-4 py-3 text-sm font-semibold transition",
-                light ? "border-zinc-300 hover:bg-zinc-100" : "border-white/15 hover:bg-white/10"
-              )}
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-300 hover:text-emerald-200"
             >
-              <Mail size={17} />
-              Contact
+              <Github size={17} aria-hidden="true" />
+              GitHub
             </a>
-            <a href={profile.github} aria-label="GitHub" className="rounded-md p-3 transition hover:text-emerald-500">
-              <Github size={20} />
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-300 hover:text-emerald-200"
+            >
+              <Linkedin size={17} aria-hidden="true" />
+              LinkedIn
             </a>
-            <a href={profile.linkedin} aria-label="LinkedIn" className="rounded-md p-3 transition hover:text-emerald-500">
-              <Linkedin size={20} />
+            <a
+              href={profile.resume}
+              className="inline-flex items-center border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-300 hover:text-emerald-200"
+            >
+              Download Résumé
             </a>
           </div>
         </div>
 
-        <aside
-          className={cx(
-            "h-fit rounded-lg border p-5",
-            light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
-          )}
-        >
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">
-            Current Direction
+        <aside className="h-fit border border-white/10 bg-[#12151b] p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-300">
+            Summary
           </p>
-          <p className={cx("mt-4 leading-7", light ? "text-zinc-700" : "text-slate-300")}>
-            I am focused on product engineering roles where strong frontend craft meets backend judgment,
-            data quality, and domain complexity.
-          </p>
-          <div className="mt-6 grid gap-3">
-            {focusAreas.map((item) => (
-              <div
-                key={item}
-                className={cx(
-                  "rounded-md border px-3 py-3 text-sm",
-                  light ? "border-zinc-200 bg-zinc-50" : "border-white/10 bg-black/20"
-                )}
-              >
-                {item}
+          <dl className="mt-5 space-y-4">
+            {[
+              ["Current role", "Junior Software Engineer at NexStox"],
+              ["Education", profile.education],
+              ["Graduation", profile.graduation],
+              ["Availability", profile.availability],
+              ["Locations", profile.mobility],
+            ].map(([label, value]) => (
+              <div key={label}>
+                <dt className="text-xs uppercase tracking-[0.14em] text-slate-500">
+                  {label}
+                </dt>
+                <dd className="mt-1 text-sm leading-6 text-slate-200">
+                  {value}
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </aside>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-4 md:grid-cols-3">
-          {metrics.map((metric) => (
-            <div
-              key={metric.label}
-              className={cx(
-                "rounded-lg border p-5",
-                light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
-              )}
-            >
-              <p className="text-3xl font-semibold text-emerald-500">{metric.value}</p>
-              <p className={cx("mt-2 text-sm", light ? "text-zinc-600" : "text-slate-400")}>{metric.label}</p>
+        <div className="divide-y divide-white/10 border-y border-white/10 md:grid md:grid-cols-4 md:divide-x md:divide-y-0">
+          {proofPoints.map((point) => (
+            <div key={point} className="p-5">
+              <p className="text-sm leading-6 text-slate-300">{point}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">Background</p>
-          <h2 className="mt-3 text-3xl font-semibold">CS, law, and useful systems.</h2>
-        </div>
-        <div className={cx("space-y-5 leading-8", light ? "text-zinc-700" : "text-slate-300")}>
-          <p>
-            I am a Computer Science student with a serious interest in law, regulation, and the
-            institutions people rely on when outcomes matter. That mix shapes how I build: practical,
-            accountable, and clear enough for real users to trust.
-          </p>
-          <p>
-            I care about tools that reduce friction, scale cleanly, and survive contact with actual
-            workflows. My recent work spans drone-imagery data processing, fintech product interfaces,
-            Angular platform components, and admin tooling.
-          </p>
-          <div className="flex flex-wrap gap-2 pt-2">
-            {skills.map((skill) => (
-              <span
-                key={skill}
-                className={cx(
-                  "rounded-md border px-3 py-2 text-sm",
-                  light ? "border-zinc-200 bg-white text-zinc-700" : "border-white/10 bg-white/[0.04] text-slate-300"
-                )}
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={cx("border-y py-20", light ? "border-zinc-200 bg-white" : "border-white/10 bg-black/20")}>
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">Selected Work</p>
-              <h2 className="mt-3 text-3xl font-semibold">Experience with measurable outcomes.</h2>
-            </div>
-            <Link href="/work" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-500">
-              Full timeline
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {roles.map((role) => (
-              <article
-                key={role.company}
-                className={cx(
-                  "rounded-lg border p-5",
-                  light ? "border-zinc-200 bg-stone-50" : "border-white/10 bg-white/[0.04]"
-                )}
-              >
-                <p className={cx("text-sm", light ? "text-zinc-500" : "text-slate-400")}>{role.period}</p>
-                <h3 className="mt-3 text-xl font-semibold">{role.company}</h3>
-                <p className="mt-1 text-sm text-emerald-500">{role.role}</p>
-                <p className={cx("mt-4 text-sm leading-6", light ? "text-zinc-700" : "text-slate-300")}>
-                  {role.summary}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">Projects</p>
-            <h2 className="mt-3 text-3xl font-semibold">Proof through shipped interfaces.</h2>
-          </div>
-          <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-500">
-            All projects
-            <ArrowRight size={16} />
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading
+            eyebrow="Featured projects"
+            title="Selected project work"
+            description="The projects below are included for technical scope, not volume. Each one links to source or a case study."
+          />
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200"
+          >
+            View all projects
+            <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
-
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {featuredProjects.map((project) => (
-            <article
-              key={project.id}
-              className={cx(
-                "rounded-lg border p-5",
-                light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
-              )}
-            >
-              <p className="text-sm font-medium text-emerald-500">{project.eyebrow}</p>
-              <h3 className="mt-3 text-xl font-semibold">{project.title}</h3>
-              <p className={cx("mt-3 text-sm leading-6", light ? "text-zinc-700" : "text-slate-300")}>
-                {project.description}
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <span key={tech} className={cx("rounded-md px-2 py-1 text-xs", light ? "bg-zinc-100" : "bg-black/30")}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </article>
+        <div className="mt-9 grid gap-5 lg:grid-cols-2">
+          {featuredProjects.slice(0, 4).map((project) => (
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </section>
+
+      <section className="border-y border-white/10 bg-black/20 px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Experience"
+              title="Engineering experience"
+              description="Reverse-chronological work across fintech, internal tooling and data engineering."
+            />
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200"
+            >
+              Full experience
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="mt-9 space-y-5">
+            {experiences.slice(0, 2).map((experience) => (
+              <ExperienceCard
+                key={experience.company}
+                experience={experience}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <SectionHeading
+          eyebrow="Technical capabilities"
+          title="Technical capabilities"
+        />
+        <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {capabilityGroups.map((group) => (
+            <div
+              key={group.title}
+              className="border border-white/10 bg-[#12151b] p-5"
+            >
+              <h3 className="text-lg font-semibold text-white">
+                {group.title}
+              </h3>
+              <div className="mt-4">
+                <TechnologyTags technologies={group.items} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-white/10 bg-black/20 px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+          <SectionHeading
+            eyebrow="About"
+            title="Software, institutions and people."
+          />
+          <div className="space-y-5 text-base leading-8 text-slate-300">
+            <p>
+              I’m interested in software that has to behave well inside real
+              institutions: finance, operations, regulation, education and legal
+              systems. I like products where clarity and accountability matter
+              as much as implementation speed.
+            </p>
+            <p>
+              I’m also interested in how software, regulation and institutions
+              intersect, with a longer-term goal of pursuing legal study. Away
+              from the keyboard, I care about classical guitar, public speaking,
+              travel and staying curious about culture without turning that into
+              a personality brochure.
+            </p>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200"
+            >
+              Read more about Adam
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <CallToAction />
     </Layout>
   );
 }
