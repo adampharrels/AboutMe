@@ -1,161 +1,90 @@
 import { useContext } from "react";
-import Head from 'next/head';
-import Link from 'next/link';
-import { motion } from "framer-motion";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Chip from '@mui/material/Chip';
+import { ArrowUpRight } from "lucide-react";
+import Layout, { cx } from "../components/Layout";
+import { profile, roles } from "../data/portfolio";
 import { ThemeContext } from "../context/theme";
 
-export default function WorkPage() {
-  const roles = [
-    {
-      company: "StevTech",
-      role:  "Data Engineering Intern",
-      period: "11/2024 - 01/2025",
-      bullets: [
-        "Reduced drone imagery preparation time from hours to seconds by building a Python data pipeline that processes multi-sensor datasets up to ∼50GB per batch for downstream computer vision weed-detection models.",
-        "Improved pipeline extensibility by designing a base class architecture that standardised how new drone and sensor types are integrated without modifying existing processing logic.",
-        "Increased metadata consistency across drone payloads by developing sensor-specific processors that standardised timestamps, coordinates, units, and field names into a unified schema.",
-      ],
-      stack: ["Tech: Python, pandas, exiftool, rasterio, FastAPI, SQLite"]
-    },
-    {
-      company: "NexStox",
-      role: "Software Engineering Intern",
-      period: "01/2026 - Present",
-      bullets: [
-        "Owned the migration of a high-traffic game from Next.js to Vite, reducing frontend build time by ∼40–60% and improving local development speed",
-        "Developed responsive trading interfaces across NXMarket and NexStox, including Staking, Order History, Funding, and Stake wallet pages, improving usability across desktop and mobile platforms",
-        "Shipped fintech product changes across short engineering, product, and business iteration cycles",
-        "Built admin dashboard tooling that cut publishing time by ∼50%, reducing dependency on frontend engineers.",
-      ],
-      stack: ["React", "TypeScript", "Next.js", "REST APIs"],
-    },
-    {
-      company: "TMA Solutions Australia",
-      role: "Software Engineering Intern",
-      period: "7/2025 - 10/2025",
-      bullets: [
-        "Improved internal workforce planning by building systems for skills tracking, resource allocation, and project data analysis.",
-        "Reduced duplicated frontend logic by ∼30–40% by refactoring Angular data tables with 1,000+ records into reusable components.",
-        "Reduced manual query handling by ∼40% by developing a multilingual voice-input module with 90% recognition accuracy in testing.",
-        "Improved system reliability by debugging performance issues and validating fixes through structured testing during Agile sprint cycles."
-      ],
-      stack: ["JavaScript", "TypeScript", "Angular CLI", "Hono", "Next.js", "NestJS", "React", "Agile"],
-    },
-  ];
-
-  const { light, setLight } = useContext(ThemeContext);
+export default function WorkPage(): JSX.Element {
+  const { light } = useContext(ThemeContext);
 
   return (
-    <div
-      className={`min-h-screen font-sans transition-colors ${
-        light ? "bg-gray-100 text-gray-900" : "bg-zinc-900 text-slate-100"
-      }`}
+    <Layout
+      title="Work - Adam Nguyen"
+      description="Work experience for Adam Nguyen across data engineering, fintech interfaces, and internal software tooling."
     >
-    <Head>
-                <title>Adam Nguyen — Portfolio</title>
-                <meta name="description" content="Adam Nguyen — Law-tech hybrid · Full-stack" />
-              </Head>
-      {/* Header */}
-      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">Adam.</h1>
-          <p className="text-sm opacity-70">CS Student· Full-stack</p>
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">Work</p>
+          <h1 className="mt-3 text-5xl font-semibold leading-tight tracking-normal">Internships with production pressure.</h1>
+          <p className={cx("mt-5 text-lg leading-8", light ? "text-zinc-700" : "text-slate-300")}>
+            I have worked across data processing, fintech product surfaces, dashboard tooling, and internal
+            platforms. The common thread is measurable workflow improvement.
+          </p>
         </div>
-        <nav className="flex items-center gap-4">
-          <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-            Background
-          </Link>
-          <Link href="/work" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-            Work
-          </Link>
-          <Link href="/projects" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-            Projects
-          </Link>
-          <Link href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
-            List 100
-          </Link>
-          <button
-            onClick={() => setLight(!light)}
-            className="px-3 py-1 border rounded-md text-sm"
-          >
-            {light ? "Dark" : "Light"}
-          </button>
-        </nav>
-      </header>
 
-  {/* Timeline */}
-  <section className="max-w-6xl mx-auto p-6 py-16 space-y-16">
-        {roles.map((r, i) => (
-          <motion.div
-            key={r.company}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-          >
-            <Card
-              sx={{
-                bgcolor: 'transparent',
-                border: '1px solid rgba(148,163,184,0.12)',
-                boxShadow: 'none',
-                color: 'inherit',
-                fontFamily: 'inherit',
-                borderRadius: '0.1rem'
-              }}
+        <div className="mt-12 space-y-6">
+          {roles.map((role) => (
+            <article
+              key={role.company}
+              className={cx(
+                "grid gap-6 rounded-lg border p-5 sm:p-6 lg:grid-cols-[0.34fr_0.66fr]",
+                light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
+              )}
             >
-              <CardContent sx={{ p: 3, color: 'inherit', fontFamily: 'inherit' }}>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                  <div>
-                    <h2 className="text-xl font-semibold">{r.company}</h2>
-                    <p className="text-zinc-400">{r.role}</p>
-                  </div>
-                  <p className="text-sm text-zinc-500 mt-2 md:mt-0">{r.period}</p>
+              <div>
+                <p className={cx("text-sm", light ? "text-zinc-500" : "text-slate-400")}>{role.period}</p>
+                <h2 className="mt-3 text-2xl font-semibold">{role.company}</h2>
+                <p className="mt-1 text-sm font-medium text-emerald-500">{role.role}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {role.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className={cx(
+                        "rounded-md border px-2 py-1 text-xs",
+                        light ? "border-zinc-200 bg-zinc-50" : "border-white/10 bg-black/20"
+                      )}
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
+              </div>
 
-                <ul className="space-y-3 text-zinc-300 mb-6 list-disc list-inside">
-                  {r.bullets.map(b => (
-                    <li key={b}>{b}</li>
+              <div>
+                <p className={cx("leading-7", light ? "text-zinc-700" : "text-slate-300")}>{role.summary}</p>
+                <ul className="mt-6 space-y-4">
+                  {role.bullets.map((bullet) => (
+                    <li key={bullet} className="grid grid-cols-[1.25rem_1fr] gap-3">
+                      <ArrowUpRight className="mt-1 text-emerald-500" size={16} />
+                      <span className={cx("leading-7", light ? "text-zinc-700" : "text-slate-300")}>{bullet}</span>
+                    </li>
                   ))}
                 </ul>
+              </div>
+            </article>
+          ))}
+        </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {r.stack.map((s) => (
-                    <Chip
-                      key={s}
-                      label={s}
-                      size="small"
-                      variant="outlined"
-                      sx={{ color: 'inherit', borderColor: 'rgba(148,163,184,0.12)', background: 'transparent' }}
-                    />
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
+        <div
+          className={cx(
+            "mt-10 flex flex-col gap-4 rounded-lg border p-5 sm:flex-row sm:items-center sm:justify-between",
+            light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
+          )}
+        >
+          <div>
+            <h2 className="text-xl font-semibold">Want the deeper version?</h2>
+            <p className={cx("mt-1 text-sm", light ? "text-zinc-600" : "text-slate-400")}>
+              I can walk through architecture, tradeoffs, and code samples from the work above.
+            </p>
+          </div>
+          <a
+            href={`mailto:${profile.email}`}
+            className="inline-flex w-fit items-center justify-center rounded-md bg-emerald-500 px-4 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-400"
+          >
+            Get in touch
+          </a>
+        </div>
       </section>
-
-      {/* CTA */}
-      <section className="max-w-6xl mx-auto p-6 py-16">
-        <Card sx={{ bgcolor: 'transparent', border: '1px solid rgba(148,163,184,0.12)', boxShadow: 'none', color: 'inherit', fontFamily: 'inherit', borderRadius: '0.75rem' }}>
-          <CardContent sx={{ p: 3, color: 'inherit', fontFamily: 'inherit' }} className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div>
-              <h3 className="text-xl font-semibold mb-1">Want more detail?</h3>
-              <p className="text-zinc-400">Happy to walk through my work or share code samples.</p>
-            </div>
-            <Button variant="contained" color="success" href="mailto:adamnguyxn.au@email.com" sx={{ textTransform: 'none' }}>
-              Get in touch
-            </Button>
-          </CardContent>
-        </Card>
-      </section>
-
-      <footer className="mt-12 py-6 text-center opacity-60 text-sm">
-        © {new Date().getFullYear()} Adam Nguyen
-      </footer>
-    </div>
+    </Layout>
   );
 }

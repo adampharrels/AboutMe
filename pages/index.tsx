@@ -1,185 +1,216 @@
+import Link from "next/link";
+import { ArrowRight, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import Layout, { cx } from "../components/Layout";
+import { focusAreas, metrics, profile, projects, roles, skills } from "../data/portfolio";
 import { useContext } from "react";
-import Head from "next/head";
-import Link from 'next/link';
-import { motion } from "framer-motion";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import { Github, Linkedin } from "lucide-react";
 import { ThemeContext } from "../context/theme";
 
 export default function Home(): JSX.Element {
-  const { light, setLight } = useContext(ThemeContext);
-  const skills = [
-    "Python",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Express.js",
-    "Hono",
-    "Angular",
-    "PostgreSQL",
-    "C++",
-    "Tailwind",
-    "Docker",
-    "Agile",
-  ];
+  const { light } = useContext(ThemeContext);
+  const featuredProjects = projects.slice(0, 3);
 
   return (
-    <div
-      className={`min-h-screen font-sans transition-colors ${
-        light ? "bg-gray-100 text-gray-900" : "bg-zinc-900 text-slate-100"
-      }`}
+    <Layout
+      title="Adam Nguyen - Portfolio"
+      description="Portfolio for Adam Nguyen, a Computer Science student and full-stack engineer working across data pipelines, fintech interfaces, and internal tools."
     >
-      <Head>
-        <title>Adam Nguyen — Portfolio</title>
-        <meta name="description" content="Adam Nguyen — Law-tech hybrid · Full-stack" />
-      </Head>
-
-      {/* Header */}
-      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
+      <section className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.25fr_0.75fr] lg:py-24">
         <div>
-          <h1 className="text-3xl font-bold">Adam.</h1>
-          <p className="text-sm opacity-70">CS Student· Full-stack</p>
-        </div>
-        <nav className="flex items-center gap-4">
-          <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-            Background
-          </Link>
-          <Link href="/work" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-            Work
-          </Link>
-          <Link href="/projects" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-            Projects
-          </Link>
-          <Link href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
-            List 100
-          </Link>
-          <button
-            onClick={() => setLight(!light)}
-            className="px-3 py-1 border rounded-md text-sm"
+          <div
+            className={cx(
+              "mb-6 inline-flex items-center gap-2 rounded-md border px-3 py-2 text-sm",
+              light
+                ? "border-zinc-200 bg-white text-zinc-700"
+                : "border-white/10 bg-white/[0.04] text-slate-300"
+            )}
           >
-            {light ? "Dark" : "Light"}
-          </button>
-        </nav>
-      </header>
+            <MapPin size={15} />
+            {profile.location}
+          </div>
 
-      {/* ABOUT — Landing */}
-      <section className="max-w-6xl mx-auto p-6 py-16 grid md:grid-cols-3 gap-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:col-span-2"
+          <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-normal sm:text-6xl">
+            Building reliable software for messy, high-stakes systems.
+          </h1>
+          <p className={cx("mt-6 max-w-2xl text-lg leading-8", light ? "text-zinc-700" : "text-slate-300")}>
+            {profile.summary}
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 rounded-md bg-emerald-500 px-4 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-400"
+            >
+              View projects
+              <ArrowRight size={17} />
+            </Link>
+            <a
+              href={`mailto:${profile.email}`}
+              className={cx(
+                "inline-flex items-center gap-2 rounded-md border px-4 py-3 text-sm font-semibold transition",
+                light ? "border-zinc-300 hover:bg-zinc-100" : "border-white/15 hover:bg-white/10"
+              )}
+            >
+              <Mail size={17} />
+              Contact
+            </a>
+            <a href={profile.github} aria-label="GitHub" className="rounded-md p-3 transition hover:text-emerald-500">
+              <Github size={20} />
+            </a>
+            <a href={profile.linkedin} aria-label="LinkedIn" className="rounded-md p-3 transition hover:text-emerald-500">
+              <Linkedin size={20} />
+            </a>
+          </div>
+        </div>
+
+        <aside
+          className={cx(
+            "h-fit rounded-lg border p-5",
+            light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
+          )}
         >
-          <h2 className="text-4xl font-extrabold">Background</h2>
-          <p className="mt-4 opacity-80 leading-relaxed">
-            I’m a Computer Science student with one foot in technology and the other in law. 
-            I’m drawn to complex systems, whether that’s software, regulation, 
-            or how people navigate institutions when they need help the most.
-            </p>
-
-          <p className="mt-4 opacity-80 leading-relaxed">
-            I care about building tools that reduce friction, 
-            scale cleanly, and actually get used.
-            Alongside software, I study law to better understand how rules, responsibility, 
-            and decision-making shape real outcomes - and to be useful when it matters.
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">
+            Current Direction
           </p>
-
-          <p className="mt-4 opacity-80 leading-relaxed">
-            I’m inspired by my parents and my brother, 
-            who shaped my sense of ethics, responsibility and resilience, 
-            and by Anthony Bourdain, whose curiosity and honesty resonate with me. 
-            My ambitions don’t fit neatly into a single box and I see that as an edge.
+          <p className={cx("mt-4 leading-7", light ? "text-zinc-700" : "text-slate-300")}>
+            I am focused on product engineering roles where strong frontend craft meets backend judgment,
+            data quality, and domain complexity.
           </p>
-
-          <h3 className="mt-6 font-semibold text-lg">Work Experience</h3>
-          <ul className="mt-2 space-y-2 opacity-80 text-sm">
-            <li>• NexStox - Software Engineering Intern</li>
-            <li>• TMA Solutions - Software Engineering Intern</li>
-          </ul>
-
-          <h3 className="mt-6 font-semibold text-lg">Skills</h3>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {skills.map((s) => (
-              <span
-                key={s}
-                className="px-3 py-1 rounded-full text-xs bg-slate-800/50 border border-slate-700"
+          <div className="mt-6 grid gap-3">
+            {focusAreas.map((item) => (
+              <div
+                key={item}
+                className={cx(
+                  "rounded-md border px-3 py-3 text-sm",
+                  light ? "border-zinc-200 bg-zinc-50" : "border-white/10 bg-black/20"
+                )}
               >
-                {s}
-              </span>
+                {item}
+              </div>
             ))}
           </div>
-        </motion.div>
-
-        <aside className="p-6 rounded-xl border border-slate-700/40 text-sm opacity-80">
-          <h4 className="font-semibold">Currently</h4>
-          <p>• Building a live regulation tracker</p>
-          <p>• Studying C++ + DSA</p>
         </aside>
       </section>
 
-      <section className="max-w-6xl mx-auto p-6 py-16 grid md:grid-cols-3 gap-10">
-        <Card
-          sx={{
-            bgcolor: 'transparent',
-            border: 'none',
-            boxShadow: 'none',
-            color: 'inherit',
-            fontFamily: 'inherit'
-          }}
-        >
-          <CardContent sx={{ p: 3, color: 'inherit', fontFamily: 'inherit' }}>
-            <h3 className="text-xl font-semibold mb-2">Contact</h3>
-            <p className="text-zinc-400 mb-4">
-              Have a project, internship, or something interesting? Let’s align.
-            </p>
-            <div className="flex flex-wrap gap-3 items-center md:flex-nowrap">
-              <Button
-                variant="contained"
-                color="success"
-                href="mailto:adamnguyxn.au@email.com"
-                sx={{ textTransform: 'none', maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-              >
-                adamnguyxn.au@email.com
-              </Button>
-              <IconButton
-                aria-label="github"
-                href="https://github.com/adampharrels"
-                color="inherit"
-                sx={{
-                  transition: 'transform 180ms ease, color 180ms ease',
-                  '&:hover': {
-                    transform: 'translateY(-3px) scale(1.12)',
-                    color: '#10B981'
-                  }
-                }}
-              >
-                <Github />
-              </IconButton>
-              <IconButton
-                aria-label="linkedin"
-                href="https://www.linkedin.com/in/adam-nguyen-2517222a0/"
-                color="inherit"
-                sx={{
-                  transition: 'transform 180ms ease, color 180ms ease',
-                  '&:hover': {
-                    transform: 'translateY(-3px) scale(1.12)',
-                    color: '#0A66C2'
-                  }
-                }}
-              >
-                <Linkedin />
-              </IconButton>
+      <section className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid gap-4 md:grid-cols-3">
+          {metrics.map((metric) => (
+            <div
+              key={metric.label}
+              className={cx(
+                "rounded-lg border p-5",
+                light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
+              )}
+            >
+              <p className="text-3xl font-semibold text-emerald-500">{metric.value}</p>
+              <p className={cx("mt-2 text-sm", light ? "text-zinc-600" : "text-slate-400")}>{metric.label}</p>
             </div>
-          </CardContent>
-        </Card>
+          ))}
+        </div>
       </section>
 
-      <footer className="mt-12 py-6 text-center opacity-60 text-sm">
-        © {new Date().getFullYear()} Adam Nguyen
-      </footer>
-    </div>
+      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">Background</p>
+          <h2 className="mt-3 text-3xl font-semibold">CS, law, and useful systems.</h2>
+        </div>
+        <div className={cx("space-y-5 leading-8", light ? "text-zinc-700" : "text-slate-300")}>
+          <p>
+            I am a Computer Science student with a serious interest in law, regulation, and the
+            institutions people rely on when outcomes matter. That mix shapes how I build: practical,
+            accountable, and clear enough for real users to trust.
+          </p>
+          <p>
+            I care about tools that reduce friction, scale cleanly, and survive contact with actual
+            workflows. My recent work spans drone-imagery data processing, fintech product interfaces,
+            Angular platform components, and admin tooling.
+          </p>
+          <div className="flex flex-wrap gap-2 pt-2">
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className={cx(
+                  "rounded-md border px-3 py-2 text-sm",
+                  light ? "border-zinc-200 bg-white text-zinc-700" : "border-white/10 bg-white/[0.04] text-slate-300"
+                )}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={cx("border-y py-20", light ? "border-zinc-200 bg-white" : "border-white/10 bg-black/20")}>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">Selected Work</p>
+              <h2 className="mt-3 text-3xl font-semibold">Experience with measurable outcomes.</h2>
+            </div>
+            <Link href="/work" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-500">
+              Full timeline
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+            {roles.map((role) => (
+              <article
+                key={role.company}
+                className={cx(
+                  "rounded-lg border p-5",
+                  light ? "border-zinc-200 bg-stone-50" : "border-white/10 bg-white/[0.04]"
+                )}
+              >
+                <p className={cx("text-sm", light ? "text-zinc-500" : "text-slate-400")}>{role.period}</p>
+                <h3 className="mt-3 text-xl font-semibold">{role.company}</h3>
+                <p className="mt-1 text-sm text-emerald-500">{role.role}</p>
+                <p className={cx("mt-4 text-sm leading-6", light ? "text-zinc-700" : "text-slate-300")}>
+                  {role.summary}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">Projects</p>
+            <h2 className="mt-3 text-3xl font-semibold">Proof through shipped interfaces.</h2>
+          </div>
+          <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-500">
+            All projects
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          {featuredProjects.map((project) => (
+            <article
+              key={project.id}
+              className={cx(
+                "rounded-lg border p-5",
+                light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
+              )}
+            >
+              <p className="text-sm font-medium text-emerald-500">{project.eyebrow}</p>
+              <h3 className="mt-3 text-xl font-semibold">{project.title}</h3>
+              <p className={cx("mt-3 text-sm leading-6", light ? "text-zinc-700" : "text-slate-300")}>
+                {project.description}
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <span key={tech} className={cx("rounded-md px-2 py-1 text-xs", light ? "bg-zinc-100" : "bg-black/30")}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </Layout>
   );
 }

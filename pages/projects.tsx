@@ -1,130 +1,104 @@
 import { useContext, useMemo, useState } from "react";
-import Head from "next/head";
-import Link from 'next/link';
-import { motion } from "framer-motion";
+import { ExternalLink, Search } from "lucide-react";
+import Layout, { cx } from "../components/Layout";
+import { projects } from "../data/portfolio";
 import { ThemeContext } from "../context/theme";
 
 export default function Projects(): JSX.Element {
-  const { light, setLight } = useContext(ThemeContext);
+  const { light } = useContext(ThemeContext);
   const [query, setQuery] = useState("");
 
-  const projects = [
-    {
-      id: "dataflowcheck",
-      title: "DataFlowCheck",
-      description: "End-to-end data validation pipeline with observability and alerts.",
-      tech: ["TypeScript", "Node", "Postgres", "React"],
-      github: "https://github.com/adampharrels/DataFlowCheck",
-    },
-    {
-      id: "CryptoWallet",
-      title: "CryptoWallet",
-      description: "Secure and user-friendly cryptocurrency wallet application.",
-      tech: ["React", "TypeScript", "Tailwind"],
-      github: "https://adampharrels.github.io/CryptoWalletFrontend/",
-    },
-    {
-      id: "RoombookingSystem",
-      title: "Room Booking System",
-      description: "A web application for booking and managing meeting rooms.",
-      tech: ["Java", "SpringBoot", "HTML", "CSS"],
-      github: "https://github.com/adampharrels/ASD_Project",
-    },
-    {
-      id: "nutrisnap",
-      title: "NutriSnap",
-      description: "A web application for tracking and managing nutritional intake.",
-      tech: ["Java", "SpringBoot", "Kotlin"],
-      github: "https://github.com/adampharrels/NutriSnap",
-    }
-  ];
-
   const filtered = useMemo(() => {
-    const q = query.toLowerCase();
-    return projects.filter(
-      (p) =>
-        p.title.toLowerCase().includes(q) ||
-        p.description.toLowerCase().includes(q)
+    const q = query.trim().toLowerCase();
+    if (!q) return projects;
+
+    return projects.filter((project) =>
+      [project.title, project.eyebrow, project.description, project.impact, ...project.tech]
+        .join(" ")
+        .toLowerCase()
+        .includes(q)
     );
   }, [query]);
 
   return (
-    <div
-      className={`min-h-screen font-sans transition-colors ${
-        light ? "bg-gray-100 text-gray-900" : "bg-zinc-900 text-slate-100"
-      }`}
+    <Layout
+      title="Projects - Adam Nguyen"
+      description="Selected software projects by Adam Nguyen across data validation, fintech UI, booking systems, and nutrition tracking."
     >
-      <Head>
-        <title>Projects — Adam Nguyen</title>
-      </Head>
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">Projects</p>
+            <h1 className="mt-3 text-5xl font-semibold leading-tight tracking-normal">Software with a clear job to do.</h1>
+            <p className={cx("mt-5 text-lg leading-8", light ? "text-zinc-700" : "text-slate-300")}>
+              A focused selection of applications and systems that show product thinking, backend structure,
+              and care for interface quality.
+            </p>
+          </div>
 
-      {/* Header */}
-      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">Adam.</h1>
-          <p className="text-sm opacity-70">CS Student · Full-stack</p>
-        </div>
-        <nav className="flex items-center gap-4">
-                  <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-                    Background
-                  </Link>
-                  <Link href="/work" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-                    Work
-                  </Link>
-                  <Link href="/projects" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-                    Projects
-                  </Link>
-                  <Link href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
-                    List 100
-                  </Link>
-                  <button
-                    onClick={() => setLight(!light)}
-                    className="px-3 py-1 border rounded-md text-sm"
-                  >
-                    {light ? "Dark" : "Light"}
-                  </button>
-                </nav>
-      </header>
-
-      {/* PROJECTS */}
-      <section className="max-w-6xl mx-auto p-6 py-12">
-        <div className="flex items-center justify-between">
-          <h3 className="text-2xl font-bold">Projects</h3>
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search projects..."
-            className="bg-slate-800 text-sm px-3 py-2 rounded-md"
-          />
+          <label
+            className={cx(
+              "flex h-12 min-w-full items-center gap-3 rounded-md border px-3 lg:min-w-[320px]",
+              light ? "border-zinc-300 bg-white" : "border-white/15 bg-white/[0.04]"
+            )}
+          >
+            <Search size={18} className={light ? "text-zinc-500" : "text-slate-400"} />
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search projects or tech"
+              className="w-full bg-transparent text-sm outline-none placeholder:text-zinc-500"
+            />
+          </label>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((p) => (
-            <motion.article
-              key={p.id}
-              whileHover={{ scale: 1.03 }}
-              className="p-5 rounded-xl border border-slate-700/40"
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {filtered.map((project) => (
+            <article
+              key={project.id}
+              className={cx(
+                "flex min-h-[320px] flex-col rounded-lg border p-6",
+                light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
+              )}
             >
-              <h4 className="text-lg font-semibold">{p.title}</h4>
-              <p className="mt-2 opacity-70 text-sm">{p.description}</p>
-              <div className="mt-3 flex gap-2 flex-wrap">
-                {p.tech.map((t) => (
-                  <span key={t} className="text-xs bg-slate-800 px-2 py-1 rounded-md opacity-80">
-                    {t}
+              <p className="text-sm font-medium text-emerald-500">{project.eyebrow}</p>
+              <h2 className="mt-3 text-2xl font-semibold">{project.title}</h2>
+              <p className={cx("mt-4 leading-7", light ? "text-zinc-700" : "text-slate-300")}>{project.description}</p>
+              <p className={cx("mt-4 text-sm leading-6", light ? "text-zinc-600" : "text-slate-400")}>{project.impact}</p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className={cx(
+                      "rounded-md border px-2 py-1 text-xs",
+                      light ? "border-zinc-200 bg-zinc-50" : "border-white/10 bg-black/20"
+                    )}
+                  >
+                    {tech}
                   </span>
                 ))}
               </div>
-              <a href={p.github} className="text-sm text-emerald-300 block mt-4">
-                GitHub →
+
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-auto inline-flex w-fit items-center gap-2 pt-8 text-sm font-semibold text-emerald-500"
+              >
+                {project.linkLabel}
+                <ExternalLink size={16} />
               </a>
-            </motion.article>
+            </article>
           ))}
         </div>
-      </section>
 
-      <footer className="mt-12 py-6 text-center opacity-60 text-sm">
-        © {new Date().getFullYear()} Adam Nguyen
-      </footer>
-    </div>
+        {filtered.length === 0 && (
+          <p className={cx("mt-10 rounded-lg border p-6 text-sm", light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]")}>
+            No projects match that search.
+          </p>
+        )}
+      </section>
+    </Layout>
   );
 }

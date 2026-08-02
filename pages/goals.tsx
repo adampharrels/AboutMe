@@ -1,80 +1,71 @@
-import Head from "next/head";
-import Link from 'next/link';
 import { useContext } from "react";
+import { CheckCircle2, Circle } from "lucide-react";
 import goalsData from "../data/goals.json";
+import Layout, { cx } from "../components/Layout";
 import { ThemeContext } from "../context/theme";
 
 export default function Goals(): JSX.Element {
-  const { light, setLight } = useContext(ThemeContext);
-  const goals: string[] = goalsData;
+  const { light } = useContext(ThemeContext);
+  const goals: string[] = goalsData.filter((goal) => !/^Thing \d+$/.test(goal));
+  const completedCount = goals.filter((goal) => goal.includes("done:")).length;
 
   return (
-    <div
-      className={`min-h-screen font-sans transition-colors ${
-        light ? "bg-gray-100 text-gray-900" : "bg-zinc-900 text-slate-100"
-      }`}
+    <Layout
+      title="100 Goals - Adam Nguyen"
+      description="Adam Nguyen's personal list of goals across study, travel, fitness, family, craft, and values."
     >
-      <Head>
-        <title>100 Goals — Adam Nguyen</title>
-      </Head>
-
-      {/* Header */}
-      <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">Adam.</h1>
-          <p className="text-sm opacity-70">CS Student · Full-stack</p>
-        </div>
-        <nav className="flex items-center gap-4">
-                  <Link href="/" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-                    Background
-                  </Link>
-                  <Link href="/work" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-                    Work
-                  </Link>
-                  <Link href="/projects" className="text-sm px-3 py-1 rounded-md hover:opacity-70">
-                    Projects
-                  </Link>
-                  <Link href="/goals" className="bg-emerald-500 text-black px-3 py-1 rounded-md text-sm font-semibold">
-                    List 100
-                  </Link>
-                  <button
-                    onClick={() => setLight(!light)}
-                    className="px-3 py-1 border rounded-md text-sm"
-                  >
-                    {light ? "Dark" : "Light"}
-                  </button>
-                </nav>
-      </header>
-
-      {/* Main Content */}
-      <section className="max-w-4xl mx-auto p-6 py-12">
-        <div className="mb-8">
-          <h2 className="text-4xl font-extrabold mb-2">100 Goals I Wanna Do</h2>
-          <p className="text-sm opacity-70">
-            A list of 100 things I want to achieve in my life, 
-            spanning personal, professional, and adventurous aspirations.
-          </p>
-          <p className="text-sm opacity-70">
-            I aim to achieve everything in the list and do not sacrifice my values along the way.
+      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:py-20">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-500">List 100</p>
+          <h1 className="mt-3 text-5xl font-semibold leading-tight tracking-normal">A public ledger for ambition and values.</h1>
+          <p className={cx("mt-5 text-lg leading-8", light ? "text-zinc-700" : "text-slate-300")}>
+            Goals I want to earn across work, study, family, travel, fitness, craft, and faith. The last one
+            is the rule that governs the rest: achieve the list without sacrificing my values along the way.
           </p>
         </div>
 
-        {/* Goals List (read-only) */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {goals.map((g, i) => (
-            <li
-              key={i}
-              className="p-3 rounded-md bg-slate-800/60 flex items-center justify-between"
-            >
-              <span className="text-sm">{g}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className={cx("rounded-lg border p-5", light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]")}>
+            <p className="text-3xl font-semibold text-emerald-500">{goals.length}</p>
+            <p className={cx("mt-2 text-sm", light ? "text-zinc-600" : "text-slate-400")}>published goals</p>
+          </div>
+          <div className={cx("rounded-lg border p-5", light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]")}>
+            <p className="text-3xl font-semibold text-emerald-500">{completedCount}</p>
+            <p className={cx("mt-2 text-sm", light ? "text-zinc-600" : "text-slate-400")}>already completed</p>
+          </div>
+          <div className={cx("rounded-lg border p-5", light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]")}>
+            <p className="text-3xl font-semibold text-emerald-500">1</p>
+            <p className={cx("mt-2 text-sm", light ? "text-zinc-600" : "text-slate-400")}>non-negotiable value rule</p>
+          </div>
+        </div>
+
+        <ol className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {goals.map((goal, index) => {
+            const completed = goal.includes("done:");
+            const cleanGoal = goal.replace("done:", "").trim();
+
+            return (
+              <li
+                key={`${goal}-${index}`}
+                className={cx(
+                  "grid grid-cols-[2rem_1fr] gap-3 rounded-lg border p-4",
+                  light ? "border-zinc-200 bg-white" : "border-white/10 bg-white/[0.04]"
+                )}
+              >
+                <div className="pt-0.5 text-emerald-500">
+                  {completed ? <CheckCircle2 size={20} /> : <Circle size={20} />}
+                </div>
+                <div>
+                  <p className={cx("text-xs", light ? "text-zinc-500" : "text-slate-500")}>
+                    {(index + 1).toString().padStart(2, "0")}
+                  </p>
+                  <p className={cx("mt-1 text-sm leading-6", completed && "line-through opacity-70")}>{cleanGoal}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
       </section>
-
-      <footer className="mt-12 py-6 text-center opacity-60 text-sm">
-        © {new Date().getFullYear()} Adam Nguyen
-      </footer>
-    </div>
+    </Layout>
   );
 }
