@@ -1,55 +1,112 @@
-# AboutMe — Portfolio
+# Adam Nguyen | Software Engineer Portfolio
 
-This is a minimal Next.js + TypeScript portfolio scaffold with Tailwind CSS and Framer Motion.
+Personal portfolio for Adam Nguyen, a Sydney-based software engineer and final-year UTS Bachelor of Information Technology student working across fintech, full-stack development, data and AI.
 
-Quick start
+Live site: https://adampharrels.github.io/AboutMe/
 
-1. Install dependencies:
+## Screenshot
+
+Add an up-to-date screenshot after deployment at:
+
+```text
+public/portfolio-preview.png
+```
+
+Suggested capture: homepage at 1440px wide after running the production build locally.
+
+## Main Technologies
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Static export for GitHub Pages
+
+## Site Structure
+
+```text
+components/          Reusable layout, cards, tags and calls to action
+data/portfolio.ts    Typed profile, experience, project and case-study content
+data/goals.json      Life List content
+pages/index.tsx      Homepage
+pages/work.tsx       Experience page
+pages/projects.tsx   Project index
+pages/projects/[slug].tsx
+                     Static project case-study pages
+pages/about.tsx      About page
+pages/goals.tsx      Life List page
+public/              Favicon and expected static assets
+```
+
+## Local Development
 
 ```bash
 npm install
-# or
-# yarn
-# pnpm install
-```
-
-2. Run dev server:
-
-```bash
 npm run dev
 ```
 
-Notes
+Open http://localhost:3000.
 
-- The homepage (`/pages/index.tsx`) contains your portfolio component.
-- Tailwind is configured via `tailwind.config.js` and `postcss.config.js`.
-- Add real GitHub URLs to the `projects` array in `pages/index.tsx`.
-- To enable TypeScript strictness tweaks, edit `tsconfig.json`.
- 
-PostCSS/Tailwind note
-
-- If you see an error like "use `@tailwindcss/postcss`", install the package and restart the dev server:
+## Quality Check
 
 ```bash
-npm install -D @tailwindcss/postcss
-# then
-npm run dev
+npm run lint
 ```
 
+The lint script runs `tsc --noEmit` as the current repository quality gate.
 
-Goals data
-
-- The 100 goals list is stored in `data/goals.json`. This keeps the content out of the page component and makes it easy to edit the list without touching code.
-- To change the public list, edit `data/goals.json` and restart the dev server (or the site will update on refresh in dev mode).
-
-Local admin editor (git-ignored)
-
-- There's a small local admin editor in `admin-local/` which is git-ignored by default. It provides a simple UI to edit `data/goals.json` without committing changes to the repo.
-- Start it with:
+## Production Build
 
 ```bash
-# (optional) set a secret so only authorized saves work
-ADMIN_SECRET=mysupersecret npm run admin
+npm run build
 ```
 
-- The editor runs a tiny server on port 5000 by default. Open http://localhost:5000 to edit the goals in a safe, local-only place.
+The site uses `output: "export"` and writes static output to `out/`.
+
+## GitHub Pages Deployment
+
+The deployed site lives under the `/AboutMe/` subpath:
+
+```bash
+BASE_PATH=/AboutMe npm run build
+```
+
+The Next config preserves:
+
+- `basePath`
+- `assetPrefix`
+- unoptimized images for static export
+- trailing slashes for GitHub Pages compatibility
+
+## Content Management
+
+Most public portfolio content is edited in `data/portfolio.ts`:
+
+- profile and contact details
+- proof points
+- capability groups
+- work experience
+- featured and secondary projects
+- project case studies
+
+The Life List is stored separately in `data/goals.json`. Placeholder entries are filtered out in the page component and completed items use the `done:` prefix.
+
+## Résumé
+
+The visible resume button expects:
+
+```text
+public/Resume_AdamNguyen.pdf
+```
+
+The code is wired for that path, but the PDF itself should be added separately.
+
+## Accessibility and Responsive Design Notes
+
+- Semantic headings and landmarks are used across pages.
+- Active navigation includes `aria-current="page"`.
+- The mobile navigation uses an accessible menu button with `aria-expanded`.
+- Links use descriptive labels such as “View StoxLens repository”.
+- Focus-visible styles are defined for keyboard navigation.
+- Reduced-motion preferences are respected in global CSS.
+- Layouts are designed to avoid horizontal overflow on small screens.
