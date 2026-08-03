@@ -11,9 +11,9 @@ export default function Projects(): JSX.Element {
       description="Selected projects by Adam Nguyen across fintech, legal technology, data and AI, mobile development and frontend engineering."
     >
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-        <SectionHeading
-          eyebrow="Projects"
-        />
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-300">
+          Projects
+        </p>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {featuredProjects.map((project) => (

@@ -11,9 +11,9 @@ export default function AboutPage(): JSX.Element {
       description="About Adam Nguyen, a Sydney-based software engineer and final-year UTS Bachelor of Information Technology student."
     >
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-        <SectionHeading
-          eyebrow="About"
-        />
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-300">
+          About
+        </p>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
           <aside className="h-fit border border-white/10 bg-white/[0.035] p-5">
