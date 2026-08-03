@@ -13,8 +13,6 @@ export default function Projects(): JSX.Element {
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
         <SectionHeading
           eyebrow="Projects"
-          title="Selected projects with clear scope and repository-backed claims."
-          description="No filler grid. These are the projects that best represent my current software engineering, full-stack, data and AI work."
         />
 
         <div className="mt-10 grid gap-5 lg:grid-cols-2">

@@ -38,9 +38,7 @@ export type Experience = {
     title: string;
     period: string;
   }>;
-  responsibility: string;
   bullets: string[];
-  highlight: string;
   technologies: string[];
 };
 
@@ -62,7 +60,7 @@ export const profile = {
   name: "Adam Nguyen",
   title: "Software Engineer · Final-year IT student",
   summary:
-    "I’m a final-year Bachelor of Information Technology student at UTS and a Junior Software Engineer at NexStox. I’ve worked across customer-facing fintech platforms, internal workforce systems and large-scale data pipelines using TypeScript, React, Python and SQL.",
+    "Final-year UTS IT student and Junior Software Engineer at NexStox, software development outsourcing, fintech, and agriculture technology.",
   email: "adamnguyxn.au@email.com",
   github: "https://github.com/adampharrels",
   linkedin: "https://www.linkedin.com/in/adam-nguyen-2517222a0/",
@@ -75,13 +73,6 @@ export const profile = {
   major: "Software Development major",
   subMajor: "Data Analytics and AI sub-major",
 };
-
-export const proofPoints = [
-  "Three industry experiences across fintech, software consulting and data engineering.",
-  "Professional fintech product development across customer-facing and administrative workflows.",
-  "Full-stack, data and AI projects spanning legal intelligence, equity research and mobile ML.",
-  "Open to graduate, junior software, data and technology roles from late 2026.",
-];
 
 export const capabilityGroups: CapabilityGroup[] = [
   {
@@ -119,16 +110,14 @@ export const experiences: Experience[] = [
       { title: "Junior Software Engineer", period: "June 2026 - Present" },
       { title: "Software Engineer Intern", period: "January 2026 - June 2026" },
     ],
-    responsibility:
-      "Build and refine TypeScript and React product features across trading, wallet, funding and administrative workflows.",
     bullets: [
       "Built features for candlestick charts, order history, funding, wallet and administrative workflows.",
       "Migrated a high-traffic game frontend from Next.js to Vite, reducing build time by approximately 40-60%.",
       "Built reusable components and resolved inconsistent behaviours across transaction, wallet and admin surfaces.",
       "Improved administrative publishing workflows, reducing publishing time by approximately 50%.",
+      "Worked across development, staging, manual validation and release verification.",
+      "Reviewed competing exchange experiences and proposed usability improvements outside the formal implementation scope.",
     ],
-    highlight:
-      "Worked across development, staging, manual validation and release verification while also reviewing competing exchange experiences and proposing usability improvements outside the formal implementation scope.",
     technologies: [
       "TypeScript",
       "React",
@@ -148,16 +137,13 @@ export const experiences: Experience[] = [
         period: "July 2025 - October 2025",
       },
     ],
-    responsibility:
-      "Build full-stack internal tools and improve existing administration workflows used for skills and employee management.",
     bullets: [
       "Built a workforce-planning system using Next.js, Hono.js, SQL and REST APIs.",
       "Developed skill-matrix and employee-management workflows for resource planning.",
       "Integrated an LLM API to summarise employee strengths and development areas.",
       "Refactored Angular administration workflows and reduced duplicated logic.",
+      "Contributed to a multilingual voice chatbot using speech recognition and embedding-based retrieval.",
     ],
-    highlight:
-      "Contributed to a multilingual voice chatbot using speech recognition and embedding-based retrieval for faster internal query handling.",
     technologies: [
       "TypeScript",
       "Next.js",
@@ -178,16 +164,13 @@ export const experiences: Experience[] = [
         period: "November 2024 - January 2025",
       },
     ],
-    responsibility:
-      "Normalise heterogeneous drone-payload data into consistent structures for analysis and model workflows.",
     bullets: [
       "Built a Python normalisation pipeline for heterogeneous drone-payload data.",
       "Processed batches reaching approximately 50 GB and reduced preparation work from hours to seconds.",
       "Established consistent metadata for timestamps, coordinates and units.",
       "Designed extensible base classes for additional payload types.",
+      "Confirmed output structures and error-handling expectations early with the team and client.",
     ],
-    highlight:
-      "Confirmed output structures and error-handling expectations early with the team and client so pipeline behaviour matched the downstream workflow.",
     technologies: [
       "Python",
       "pandas",

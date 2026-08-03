@@ -24,10 +24,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
       </div>
 
       <div>
-        <p className="text-base leading-7 text-slate-200">
-          {experience.responsibility}
-        </p>
-        <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-300">
+        <ul className="space-y-3 text-sm leading-6 text-slate-300">
           {experience.bullets.map((bullet) => (
             <li key={bullet} className="grid grid-cols-[0.85rem_1fr] gap-3">
               <span
@@ -38,14 +35,6 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
             </li>
           ))}
         </ul>
-        <div className="mt-5 border border-white/10 bg-[#0f1115] p-4">
-          <p className="text-sm font-semibold text-emerald-200">
-            Highlighted contribution
-          </p>
-          <p className="mt-2 text-sm leading-6 text-slate-300">
-            {experience.highlight}
-          </p>
-        </div>
         <div className="mt-5">
           <TechnologyTags technologies={experience.technologies} />
         </div>

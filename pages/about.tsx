@@ -1,7 +1,8 @@
 import CallToAction from "../components/CallToAction";
 import Layout from "../components/Layout";
 import SectionHeading from "../components/SectionHeading";
-import { profile } from "../data/portfolio";
+import TechnologyTags from "../components/TechnologyTags";
+import { capabilityGroups, profile } from "../data/portfolio";
 
 export default function AboutPage(): JSX.Element {
   return (
@@ -12,8 +13,6 @@ export default function AboutPage(): JSX.Element {
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
         <SectionHeading
           eyebrow="About"
-          title="A final-year IT student building software for fintech, data and operational systems."
-          description="The short version: I’m based in Sydney, work as a Junior Software Engineer at NexStox and expect to graduate from UTS in December 2026."
         />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
@@ -43,8 +42,9 @@ export default function AboutPage(): JSX.Element {
             <p>
               I’m a final-year Bachelor of Information Technology student at
               UTS, majoring in Software Development with a Data Analytics and AI
-              sub-major. Professionally, I’ve worked across fintech products,
-              internal workforce systems and data pipelines.
+              sub-major. Professionally, I’ve worked across software development outsourcing, fintech, 
+              and agriculture technology.
+        
             </p>
             <p>
               My strongest interests sit around software, fintech, data and
@@ -69,6 +69,32 @@ export default function AboutPage(): JSX.Element {
           </div>
         </div>
       </section>
+
+      <section className="border-y border-white/10 bg-black/20 px-4 py-14 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading
+            eyebrow="Capabilities"
+            title="Technical capabilities"
+            description="Grouped by how I use them across work and projects."
+          />
+          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {capabilityGroups.map((group) => (
+              <div
+                key={group.title}
+                className="border border-white/10 bg-[#12151b] p-5"
+              >
+                <h2 className="text-lg font-semibold text-white">
+                  {group.title}
+                </h2>
+                <div className="mt-4">
+                  <TechnologyTags technologies={group.items} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CallToAction />
     </Layout>
   );
