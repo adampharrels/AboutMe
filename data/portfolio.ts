@@ -61,7 +61,7 @@ export const profile = {
   title: "Software Engineer · Final-year IT student",
   summary:
     "Final-year UTS IT student and Junior Software Engineer at NexStox, software development outsourcing, fintech, and agriculture technology.",
-  email: "adamnguyxn.au@email.com",
+  email: "adamnguyxn.au@gmail.com",
   github: "https://github.com/adampharrels",
   linkedin: "https://www.linkedin.com/in/adam-nguyen-2517222a0/",
   resume: `${assetBasePath}/Resume_AdamNguyen.pdf`,
@@ -133,8 +133,8 @@ export const experiences: Experience[] = [
       "Software consulting internship focused on workforce planning systems, administration workflows and AI-assisted internal tooling.",
     roles: [
       {
-        title: "Software Engineering Intern",
-        period: "July 2025 - October 2025",
+        title: "Software Engineer Intern",
+        period: "October 2025 - January 2026",
       },
     ],
     bullets: [
@@ -160,8 +160,8 @@ export const experiences: Experience[] = [
       "Data engineering internship supporting drone-imagery preparation for downstream computer-vision weed-detection workflows.",
     roles: [
       {
-        title: "Data Engineering Intern",
-        period: "November 2024 - January 2025",
+        title: "Data Engineer Intern",
+        period: "April 2026 - June 2026",
       },
     ],
     bullets: [

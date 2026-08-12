@@ -50,13 +50,6 @@ export default function CallToAction() {
             Download Résumé
           </a>
         </div>
-        <p className="mt-4 text-xs text-slate-500">
-          Resume button uses{" "}
-          <code className="bg-black/30 px-1 py-0.5">
-            public/Resume_AdamNguyen.pdf
-          </code>
-          .
-        </p>
       </div>
     </section>
   );
