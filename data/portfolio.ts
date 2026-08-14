@@ -17,13 +17,18 @@ export type Project = {
     src: string;
     alt: string;
   };
+  images?: Array<{
+    src: string;
+    alt: string;
+    caption: string;
+  }>;
   links: ProjectLink[];
   caseStudy?: {
     overview: string;
     problem: string;
     users: string;
     mainCapabilities: string[];
-    myContribution: string[];
+    myContribution?: string[];
     technicalApproach: string[];
     decisions: string[];
     challenges: string[];
@@ -257,11 +262,11 @@ export const projects: Project[] = [
     title: "StoxLens",
     category: ["Full-stack", "Data/AI", "Fintech"],
     summary:
-      "A full-stack equity research workspace for analysing stocks, calculating price-based signals, comparing companies and generating structured research briefs.",
+      "A daily watchlist triage tool that helps investors and student analysts decide which stocks need attention, why they changed, and whether the original watch thesis still holds.",
     capabilities: [
-      "Historical market-data retrieval with Alpha Vantage integration and Yahoo Finance fallback.",
-      "Momentum, trend, volatility, drawdown, RSI and volume signals for equity analysis.",
-      "Multi-stock comparison, AI-generated research briefs, report history and watchlist workflows.",
+      "Daily Today page ranking tickers by attention urgency.",
+      "Snapshot comparison showing what changed since the previous check.",
+      "Price and news trigger explanations using deterministic rules.",
     ],
     technologies: [
       "Next.js",
@@ -278,6 +283,18 @@ export const projects: Project[] = [
       "Yahoo Finance",
     ],
     featured: true,
+    images: [
+      {
+        src: "https://raw.githubusercontent.com/adampharrels/StoxLens/main/frontend/public/screenshots/today-triage.png",
+        alt: "StoxLens Today triage screen showing watchlist attention levels.",
+        caption: "Today triage view",
+      },
+      {
+        src: "https://raw.githubusercontent.com/adampharrels/StoxLens/main/frontend/public/screenshots/watchlist-notes.png",
+        alt: "StoxLens watchlist notes screen showing saved thesis and risk fields.",
+        caption: "Watchlist notes",
+      },
+    ],
     links: [
       {
         label: "View StoxLens repository",
@@ -292,37 +309,41 @@ export const projects: Project[] = [
     ],
     caseStudy: {
       overview:
-        "StoxLens is a research workspace for pulling market data, computing signals and turning analysis into structured briefs.",
+        "StoxLens helps users review a stock watchlist faster by combining saved watch notes, price/news triggers, and snapshot comparisons. Instead of manually checking every ticker each day, users can see which stocks moved from low to medium/high attention and what changed since the last check.",
       problem:
-        "Equity research often requires switching between data sources, spreadsheets, calculations and notes before a coherent view emerges.",
+        "Watchlists often become passive lists of tickers. Users add a stock for a reason, but later have to manually check price action, news, risks and original thesis notes to decide whether anything meaningful changed.",
       users:
         "Students, analysts and technically minded investors who want a structured local workflow for comparing companies and reviewing signals.",
       mainCapabilities: [
-        "Historical price-data retrieval with provider fallback.",
-        "Signal calculations for momentum, trend, volatility, drawdown, RSI and volume.",
-        "Watchlists, report history, multi-stock comparison and AI-generated research briefs.",
-      ],
-      myContribution: [
-        "Built the full-stack architecture across a Next.js frontend and FastAPI backend.",
-        "Implemented data retrieval, signal calculation and persistence workflows.",
-        "Added backend testing, Docker Compose support, rate limiting and local fallback behaviour.",
+        "Watchlist CRUD with saved watch reason, main risk, and change-my-mind notes.",
+        "Daily Today page ranking tickers by attention urgency.",
+        "Snapshot comparison showing what changed since the previous check.",
+        "Price/news trigger explanations using deterministic rules.",
+        "Historical price-data retrieval with Alpha Vantage and Yahoo Finance fallback.",
+        "Optional structured research briefs and report history.",
       ],
       technicalApproach: [
         "FastAPI and Python handle data retrieval, calculations and research-brief generation.",
         "pandas and NumPy support signal computation over historical price data.",
         "SQLAlchemy and PostgreSQL persist watchlists, history and generated reports.",
         "The frontend presents comparison and research workflows in Next.js and TypeScript.",
+        "Persisted triage snapshots support latest-vs-previous comparisons.",
+        "Watchlist notes connect directly to Today alerts.",
+        "Deterministic scoring and keyword-based news classification avoid opaque “AI says so” behaviour.",
       ],
       decisions: [
         "Used provider fallback so the app remains usable when one data source is unavailable or rate-limited.",
         "Kept local in-memory fallback behaviour for development and resilience.",
+        "Treated AI briefs as optional, not the core product.",
+        "Used deterministic alert logic so users can inspect why a stock was flagged.",
+        "Stored watch notes and triage snapshots so alerts have context and history.",
       ],
       challenges: [
         "Handling external API limits without making the product feel broken.",
         "Presenting quantitative signals clearly without implying investment advice.",
       ],
       outcome:
-        "A full-stack fintech and data project showing API integration, analysis logic, persistence, testing and AI-assisted report generation.",
+        "A practical full-stack fintech product that turns a static watchlist into a daily review workflow, combining user-owned notes, market signals, news-aware triggers, persistence and clear change summaries.",
     },
   },
   {

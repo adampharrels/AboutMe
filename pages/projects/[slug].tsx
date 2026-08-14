@@ -1,6 +1,7 @@
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowLeft, X } from "lucide-react";
 import CallToAction from "../../components/CallToAction";
 import ExternalTextLink from "../../components/ExternalTextLink";
 import Layout from "../../components/Layout";
@@ -12,6 +13,8 @@ import {
   type Project,
 } from "../../data/portfolio";
 
+type ProjectImage = NonNullable<Project["images"]>[number];
+
 type ProjectCaseStudyProps = {
   project: Project;
 };
@@ -20,6 +23,25 @@ export default function ProjectCaseStudy({
   project,
 }: ProjectCaseStudyProps): JSX.Element {
   const caseStudy = project.caseStudy;
+  const [selectedImage, setSelectedImage] = useState<ProjectImage | null>(null);
+
+  useEffect(() => {
+    if (!selectedImage) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedImage(null);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [selectedImage]);
 
   if (!caseStudy) {
     return (
@@ -80,6 +102,36 @@ export default function ProjectCaseStudy({
         </div>
       </section>
 
+      {project.images && project.images.length > 0 && (
+        <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6">
+          <div className="grid gap-5 md:grid-cols-2">
+            {project.images.map((image) => (
+              <figure
+                key={image.src}
+                className="border border-white/10 bg-[#12151b]"
+              >
+                <button
+                  type="button"
+                  onClick={() => setSelectedImage(image)}
+                  className="block w-full border-b border-white/10 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+                  aria-label={`Open larger screenshot: ${image.caption}`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full object-cover object-top transition hover:opacity-90"
+                    loading="lazy"
+                  />
+                </button>
+                <figcaption className="p-3 text-sm text-slate-400">
+                  {image.caption}. Click to enlarge.
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="border-y border-white/10 bg-black/20 px-4 py-14 sm:px-6 sm:py-16">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-2">
           <CaseBlock title="Overview" body={caseStudy.overview} />
@@ -94,7 +146,9 @@ export default function ProjectCaseStudy({
           title="Main capabilities"
           items={caseStudy.mainCapabilities}
         />
-        <CaseList title="My contribution" items={caseStudy.myContribution} />
+        {caseStudy.myContribution && caseStudy.myContribution.length > 0 && (
+          <CaseList title="My contribution" items={caseStudy.myContribution} />
+        )}
         <CaseList
           title="Technical approach"
           items={caseStudy.technicalApproach}
@@ -110,6 +164,38 @@ export default function ProjectCaseStudy({
       </section>
 
       <CallToAction />
+
+      {selectedImage && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedImage.caption}
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div
+            className="max-h-full w-full max-w-7xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-3 flex items-center justify-between gap-4 text-slate-200">
+              <p className="text-sm font-medium">{selectedImage.caption}</p>
+              <button
+                type="button"
+                onClick={() => setSelectedImage(null)}
+                className="inline-flex h-10 w-10 items-center justify-center border border-white/20 text-slate-100 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+                aria-label="Close larger screenshot"
+              >
+                <X size={18} aria-hidden="true" />
+              </button>
+            </div>
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="max-h-[82vh] w-full object-contain"
+            />
+          </div>
+        </div>
+      )}
     </Layout>
   );
 }

@@ -17,14 +17,15 @@ export default function ProjectCard({
   const externalLinks = project.links.filter(
     (link) => link.kind !== "case-study",
   );
+  const previewImage = project.image ?? project.images?.[0];
 
   return (
     <article className="flex h-full flex-col border border-white/10 bg-[#12151b]">
-      {project.image ? (
+      {previewImage ? (
         <div className="border-b border-white/10 bg-slate-950">
           <img
-            src={project.image.src}
-            alt={project.image.alt}
+            src={previewImage.src}
+            alt={previewImage.alt}
             className="h-56 w-full object-cover object-top"
             loading="lazy"
           />
