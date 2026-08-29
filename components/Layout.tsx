@@ -103,6 +103,7 @@ export default function Layout({
             </HeaderIcon>
             <a
               href={profile.resume}
+              download="Resume_AdamNguyen.pdf"
               className=" border border-white/15 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
             >
               Download Résumé
@@ -169,6 +170,7 @@ export default function Layout({
               </a>
               <a
                 href={profile.resume}
+                download="Resume_AdamNguyen.pdf"
                 className=" border border-white/15 px-3 py-2 text-sm text-slate-100"
               >
                 Download Résumé
@@ -217,7 +219,11 @@ export default function Layout({
             >
               GitHub
             </a>
-            <a href={profile.resume} className="hover:text-emerald-300">
+            <a
+              href={profile.resume}
+              download="Resume_AdamNguyen.pdf"
+              className="hover:text-emerald-300"
+            >
               Résumé
             </a>
           </div>

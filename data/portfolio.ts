@@ -129,6 +129,7 @@ export const experiences: Experience[] = [
       "React",
       "Next.js",
       "Vite",
+      "Node.js",
       "REST APIs",
       "Azure DevOps",
     ],

@@ -45,6 +45,7 @@ export default function Home(): JSX.Element {
             </a>
             <a
               href={profile.resume}
+              download="Resume_AdamNguyen.pdf"
               className="inline-flex items-center border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-300 hover:text-emerald-200"
             >
               Download Résumé
