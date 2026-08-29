@@ -58,7 +58,7 @@ export default function Home(): JSX.Element {
           </p>
           <dl className="mt-5 space-y-4">
             {[
-              ["Current role", "Junior Software Engineer at NexStox"],
+              ["Current role", "Software Engineer at NexStox"],
               ["Education", profile.education],
               ["Graduation", profile.graduation],
               ["Availability", profile.availability],

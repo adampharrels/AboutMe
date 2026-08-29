@@ -24,7 +24,7 @@ export default function AboutPage(): JSX.Element {
                 ["Sub-major", profile.subMajor],
                 ["Graduation", profile.graduation],
                 ["Location", profile.location],
-                ["Current role", "Junior Software Engineer at NexStox"],
+                ["Current role", "Software Engineer at NexStox"],
               ].map(([label, value]) => (
                 <div key={label}>
                   <dt className="text-xs uppercase tracking-[0.14em] text-slate-500">

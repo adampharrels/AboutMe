@@ -65,7 +65,7 @@ export const profile = {
   name: "Adam Nguyen",
   title: "Software Engineer · Final-year IT student",
   summary:
-    "Final-year UTS IT student and Junior Software Engineer at NexStox, software development outsourcing, fintech, and agriculture technology.",
+    "Final-year UTS IT student and Software Engineer at NexStox, software development outsourcing, fintech, and agriculture technology.",
   email: "adamnguyxn.au@gmail.com",
   github: "https://github.com/adampharrels",
   linkedin: "https://www.linkedin.com/in/adam-nguyen-2517222a0/",
@@ -112,14 +112,15 @@ export const experiences: Experience[] = [
     context:
       "Fintech product work across a cryptocurrency exchange, asset-management platform and cryptocurrency-based game.",
     roles: [
-      { title: "Junior Software Engineer", period: "June 2026 - Present" },
+      { title: "Software Engineer", period: "June 2026 - Present" },
       { title: "Software Engineer Intern", period: "January 2026 - June 2026" },
     ],
     bullets: [
       "Built features for candlestick charts, order history, funding, wallet and administrative workflows.",
       "Migrated a high-traffic game frontend from Next.js to Vite, reducing build time by approximately 40-60%.",
+      "Contributed to integrating a new external trading venue supporting a tokenized-asset product line by implementing provider-specific readiness checks in the order-routing backend, so an outage in one provider would not block orders routed through another.",
       "Built reusable components and resolved inconsistent behaviours across transaction, wallet and admin surfaces.",
-      "Improved administrative publishing workflows, reducing publishing time by approximately 50%.",
+      "Developed features for an admin panel that cut publishing time by approximately 50% and reduced reliance on frontend developers, enabling non-technical staff to manage users, transactions, and cryptocurrency and token listings.",
       "Worked across development, staging, manual validation and release verification.",
       "Reviewed competing exchange experiences and proposed usability improvements outside the formal implementation scope.",
     ],
@@ -170,11 +171,9 @@ export const experiences: Experience[] = [
       },
     ],
     bullets: [
-      "Built a Python normalisation pipeline for heterogeneous drone-payload data.",
-      "Processed batches reaching approximately 50 GB and reduced preparation work from hours to seconds.",
-      "Established consistent metadata for timestamps, coordinates and units.",
-      "Designed extensible base classes for additional payload types.",
-      "Confirmed output structures and error-handling expectations early with the team and client.",
+      "Reduced drone imagery preparation time from hours to seconds by building a Python ETL pipeline that processes multi-sensor datasets up to ∼50GB per batch for downstream computer vision models.",
+      "Designed a class-based processor that standardised inconsistent metadata across multiple drones, allowing additional data sources to be integrated without changing existing processing logic.",
+      "Presented product demos and technical outcomes to stakeholders, prospective investors, and university academics, translating complex technical concepts into clear insights for non-technical audiences.",
     ],
     technologies: [
       "Python",
