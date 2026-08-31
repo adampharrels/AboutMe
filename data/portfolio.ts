@@ -65,7 +65,7 @@ export const profile = {
   name: "Adam Nguyen",
   title: "Software Engineer · Final-year IT student",
   summary:
-    "Final-year UTS IT student and Software Engineer at NexStox, software development outsourcing, fintech, and agriculture technology.",
+    "Final-year UTS IT student and Software Engineer at NexStox, with experience across fintech, software consulting and agriculture technology.",
   email: "adamnguyxn.au@gmail.com",
   github: "https://github.com/adampharrels",
   linkedin: "https://www.linkedin.com/in/adam-nguyen-2517222a0/",
@@ -81,7 +81,7 @@ export const profile = {
 
 export const capabilityGroups: CapabilityGroup[] = [
   {
-    title: "Languages",
+    title: "Programming languages",
     items: ["TypeScript", "Python", "Java", "SQL"],
   },
   {
@@ -89,20 +89,23 @@ export const capabilityGroups: CapabilityGroup[] = [
     items: ["React", "Next.js", "Angular", "Tailwind CSS"],
   },
   {
-    title: "Backend and data",
+    title: "Backend",
     items: [
       "FastAPI",
       "Node.js",
       "Express.js",
       "Hono.js",
       "PostgreSQL",
+      "SQLite",
+      "Prisma",
+      "SQLAlchemy",
       "pandas",
       "NumPy",
     ],
   },
   {
-    title: "Tooling",
-    items: ["Docker", "Git", "GitHub Actions", "Azure DevOps"],
+    title: "Tools and platforms",
+    items: ["Docker", "Git", "GitHub Actions", "Azure DevOps", "Vite", "Gradle"],
   },
 ];
 

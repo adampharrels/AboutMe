@@ -38,7 +38,7 @@ export default function Layout({
   const pageTitle = title ? `${title} | Adam Nguyen` : site.title;
 
   return (
-    <div className="min-h-screen bg-[#0f1115] text-slate-100 antialiased">
+    <div className="min-h-screen bg-[#0d0f12] text-slate-100 antialiased">
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={description} />
@@ -52,16 +52,18 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0f1115]/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0d0f12]/90 backdrop-blur">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
           <Link
             href="/"
-            className="min-w-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+            className="block min-w-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
           >
-            <p className="text-base font-semibold tracking-normal sm:text-lg">
+            <span className="block text-sm font-semibold tracking-normal text-white sm:text-base">
               {profile.name}
-            </p>
-            <p className="text-xs text-slate-400 sm:text-sm">{profile.title}</p>
+            </span>
+            <span className="block text-xs text-slate-500 sm:text-sm">
+              {profile.title}
+            </span>
           </Link>
 
           <nav
@@ -76,7 +78,7 @@ export default function Layout({
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={cx(
-                    " px-3 py-2 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400",
+                    "px-2.5 py-2 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400",
                     active
                       ? "text-white underline decoration-emerald-400 underline-offset-8"
                       : "text-slate-400 hover:text-white",
@@ -102,17 +104,11 @@ export default function Layout({
               <Linkedin size={18} />
             </HeaderIcon>
             <a
-              href={profile.resume}
-              download="Resume_AdamNguyen.pdf"
-              className=" border border-white/15 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
-            >
-              Download Résumé
-            </a>
-            <a
               href={`mailto:${profile.email}`}
-              className=" bg-emerald-400 px-3 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+              className="inline-flex h-10 w-10 items-center justify-center text-slate-300 transition hover:bg-white/10 hover:text-emerald-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+              aria-label="Email Adam Nguyen"
             >
-              Contact
+              <Mail size={18} aria-hidden="true" />
             </a>
           </div>
 
@@ -121,7 +117,7 @@ export default function Layout({
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
-            className="inline-flex h-11 w-11 items-center justify-center border border-white/15 text-slate-100 transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center border border-white/15 text-slate-100 transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400 lg:hidden"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -131,7 +127,7 @@ export default function Layout({
           <div className="border-t border-white/10 px-4 pb-4 lg:hidden">
             <nav
               aria-label="Mobile navigation"
-              className="mx-auto grid max-w-6xl gap-1 py-3"
+              className="mx-auto grid max-w-5xl gap-1 py-3"
             >
               {navItems.map((item) => {
                 const active = isActive(router.pathname, item.href);
@@ -142,8 +138,8 @@ export default function Layout({
                     aria-current={active ? "page" : undefined}
                     onClick={() => setOpen(false)}
                     className={cx(
-                      " px-3 py-3 text-base font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400",
-                      active ? "bg-white/10 text-white" : "text-slate-300",
+                      "py-3 text-base font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400",
+                      active ? "text-white" : "text-slate-400",
                     )}
                   >
                     {item.label}
@@ -151,12 +147,12 @@ export default function Layout({
                 );
               })}
             </nav>
-            <div className="mx-auto flex max-w-6xl flex-wrap gap-2">
+            <div className="mx-auto flex max-w-5xl flex-wrap gap-4 border-t border-white/10 pt-4">
               <a
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer"
-                className=" border border-white/15 px-3 py-2 text-sm text-slate-100"
+                className="text-sm text-slate-300 hover:text-emerald-300"
               >
                 GitHub
               </a>
@@ -164,20 +160,20 @@ export default function Layout({
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className=" border border-white/15 px-3 py-2 text-sm text-slate-100"
+                className="text-sm text-slate-300 hover:text-emerald-300"
               >
                 LinkedIn
               </a>
               <a
                 href={profile.resume}
                 download="Resume_AdamNguyen.pdf"
-                className=" border border-white/15 px-3 py-2 text-sm text-slate-100"
+                className="text-sm text-slate-300 hover:text-emerald-300"
               >
                 Download Résumé
               </a>
               <a
                 href={`mailto:${profile.email}`}
-                className=" bg-emerald-400 px-3 py-2 text-sm font-semibold text-zinc-950"
+                className="text-sm text-slate-300 hover:text-emerald-300"
               >
                 Contact
               </a>
@@ -189,9 +185,9 @@ export default function Layout({
       <main>{children}</main>
 
       <footer className="border-t border-white/10 px-4 py-8 sm:px-6">
-        <div className="mx-auto flex max-w-6xl flex-col gap-5 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+        <div className="mx-auto flex max-w-5xl flex-col gap-5 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="font-medium text-slate-200">{profile.name}</p>
+            <p className="font-medium text-slate-300">{profile.name}</p>
             <p className="mt-1">
               {profile.location} · {profile.availability}
             </p>

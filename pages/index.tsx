@@ -7,20 +7,23 @@ import { profile } from "../data/portfolio";
 export default function Home(): JSX.Element {
   return (
     <Layout>
-      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.25fr_0.75fr] lg:py-24">
+      <section className="mx-auto grid max-w-5xl gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.15fr_0.85fr]">
         <div>
-          <p className="inline-flex items-center gap-2 border border-white/10 bg-[#12151b] px-3 py-2 text-sm text-slate-300">
+          <p className="inline-flex items-center gap-2 text-sm text-slate-500">
             <MapPin size={15} aria-hidden="true" />
             {profile.location}
           </p>
-          <p className="mt-6 max-w-3xl text-xl leading-9 text-slate-200 sm:text-2xl">
+          <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight tracking-normal text-white sm:text-5xl">
+            {profile.name}
+          </h1>
+          <p className="mt-6 max-w-3xl text-xl leading-8 text-slate-300">
             {profile.summary}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-5">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 bg-emerald-400 px-4 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-300"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition hover:text-emerald-200"
             >
               View Projects
               <ArrowRight size={17} aria-hidden="true" />
@@ -29,7 +32,7 @@ export default function Home(): JSX.Element {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-300 hover:text-emerald-200"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-emerald-200"
             >
               <Github size={17} aria-hidden="true" />
               GitHub
@@ -38,7 +41,7 @@ export default function Home(): JSX.Element {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-300 hover:text-emerald-200"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-emerald-200"
             >
               <Linkedin size={17} aria-hidden="true" />
               LinkedIn
@@ -46,18 +49,18 @@ export default function Home(): JSX.Element {
             <a
               href={profile.resume}
               download="Resume_AdamNguyen.pdf"
-              className="inline-flex items-center border border-white/15 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-300 hover:text-emerald-200"
+              className="inline-flex items-center text-sm font-semibold text-slate-300 transition hover:text-emerald-200"
             >
               Download Résumé
             </a>
           </div>
         </div>
 
-        <aside className="h-fit border border-white/10 bg-[#12151b] p-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-300">
+        <aside className="h-fit border-t border-white/10 pt-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
             Summary
           </p>
-          <dl className="mt-5 space-y-4">
+          <dl className="mt-5 divide-y divide-white/10">
             {[
               ["Current role", "Software Engineer at NexStox"],
               ["Education", profile.education],
@@ -65,7 +68,7 @@ export default function Home(): JSX.Element {
               ["Availability", profile.availability],
               ["Locations", profile.mobility],
             ].map(([label, value]) => (
-              <div key={label}>
+              <div key={label} className="py-4 first:pt-0">
                 <dt className="text-xs uppercase tracking-[0.14em] text-slate-500">
                   {label}
                 </dt>
