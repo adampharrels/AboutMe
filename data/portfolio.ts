@@ -65,11 +65,12 @@ export const profile = {
   name: "Adam Nguyen",
   title: "Software Engineer · Final-year IT student",
   summary:
-    "Final-year UTS IT student and Software Engineer at NexStox, with experience across fintech, software consulting and agriculture technology.",
+    "Final-year UTS IT student and Software Engineer at NexStox, software development outsourcing, fintech, and agriculture technology.",
   email: "adamnguyxn.au@gmail.com",
   github: "https://github.com/adampharrels",
   linkedin: "https://www.linkedin.com/in/adam-nguyen-2517222a0/",
-  resume: `${assetBasePath}/Resume_AdamNguyen.pdf`,
+  resume:
+    "https://drive.google.com/file/d/1U6Xfdu_xvLYBmELz0DbQ0RMSmo9x7W95/view?usp=sharing",
   location: "Sydney, Australia",
   graduation: "Graduating December 2026",
   availability: "Open to graduate and junior opportunities from late 2026",
@@ -436,6 +437,27 @@ export const projects: Project[] = [
       "Express.js",
     ],
     featured: true,
+    image: {
+      src: `${assetBasePath}/screenshots/unispace-home.png`,
+      alt: "UniSpace login page with study-space booking branding and account form.",
+    },
+    images: [
+      {
+        src: `${assetBasePath}/screenshots/unispace-home.png`,
+        alt: "UniSpace login page with study-space booking branding and account form.",
+        caption: "UniSpace main login page",
+      },
+      {
+        src: `${assetBasePath}/screenshots/unispace-rooms.png`,
+        alt: "UniSpace room filtering page showing available study rooms and booking actions.",
+        caption: "Room filtering and available rooms",
+      },
+      {
+        src: `${assetBasePath}/screenshots/unispace-calendar.png`,
+        alt: "UniSpace room booking calendar with room filter controls and weekly schedule columns.",
+        caption: "Room booking calendar",
+      },
+    ],
     links: [
       {
         label: "View UniSpace repository",
