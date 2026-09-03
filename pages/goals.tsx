@@ -50,7 +50,7 @@ export default function Goals(): JSX.Element {
           description="I aim to achieve everything in the list and do not sacrifice my values along the way. Never miss moments that matter."
         />
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="mt-8 grid gap-6 border-y border-white/10 py-6 sm:grid-cols-3">
           <Stat
             value={goals.length.toString()}
             label="real entries published"
@@ -59,13 +59,13 @@ export default function Goals(): JSX.Element {
           <Stat value="1" label="values rule at the end" />
         </div>
 
-        <ol className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <ol className="mt-10 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
           {goals.map((goal, index) => {
             const Icon = statusIcon[goal.status];
             return (
               <li
                 key={`${goal.text}-${index}`}
-                className="grid grid-cols-[2.25rem_1fr] gap-3 border border-white/10 bg-white/[0.035] p-4"
+                className="grid grid-cols-[2.25rem_1fr] gap-3 border-t border-white/10 py-4"
               >
                 <div className="pt-0.5 text-emerald-300">
                   <Icon size={20} aria-hidden="true" />
@@ -93,8 +93,8 @@ export default function Goals(): JSX.Element {
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="border border-white/10 bg-white/[0.035] p-5">
-      <p className="text-3xl font-semibold text-emerald-300">{value}</p>
+    <div>
+      <p className="text-3xl font-semibold text-white">{value}</p>
       <p className="mt-2 text-sm text-slate-400">{label}</p>
     </div>
   );

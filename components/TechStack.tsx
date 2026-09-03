@@ -33,6 +33,7 @@ const deviconBase =
 
 const techIcons: Record<string, TechIconConfig> = {
   TypeScript: { src: `${deviconBase}/typescript/typescript-original.svg` },
+  JavaScript: { src: `${deviconBase}/javascript/javascript-original.svg` },
   Python: { src: `${deviconBase}/python/python-original.svg` },
   Java: { src: `${deviconBase}/java/java-original.svg` },
   SQL: { color: "#38bdf8", fallback: Database },
@@ -43,6 +44,7 @@ const techIcons: Record<string, TechIconConfig> = {
     src: `${deviconBase}/tailwindcss/tailwindcss-original.svg`,
   },
   FastAPI: { src: `${deviconBase}/fastapi/fastapi-original.svg` },
+  "Spring Boot": { src: `${deviconBase}/spring/spring-original.svg` },
   "Node.js": { src: `${deviconBase}/nodejs/nodejs-original.svg` },
   "Express.js": { src: `${deviconBase}/express/express-original.svg` },
   "Hono.js": { color: "#e36002", fallback: Workflow },
@@ -66,26 +68,23 @@ const techIcons: Record<string, TechIconConfig> = {
 
 export default function TechStack({ groups }: TechStackProps) {
   return (
-    <div className="grid gap-5 md:grid-cols-2">
+    <div className="grid gap-x-10 gap-y-8 md:grid-cols-2">
       {groups.map((group) => {
         const Icon =
           groupIcons[group.title as keyof typeof groupIcons] ?? fallbackIcon;
 
         return (
-          <section
-            key={group.title}
-            className="border border-white/10 bg-[#12151b]"
-          >
-            <div className="flex items-center gap-3 border-b border-white/10 p-5">
-              <span className="inline-flex h-10 w-10 items-center justify-center border border-emerald-300/30 bg-emerald-300/10 text-emerald-200">
-                <Icon size={20} aria-hidden="true" />
+          <section key={group.title} className="border-t border-white/10 pt-5">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-9 w-9 items-center justify-center border border-white/10 text-emerald-300">
+                <Icon size={18} aria-hidden="true" />
               </span>
-              <h2 className="text-lg font-semibold text-white">
+              <h2 className="text-base font-semibold text-white">
                 {group.title}
               </h2>
             </div>
 
-            <ul className="grid grid-cols-3 gap-3 p-5 sm:grid-cols-4 lg:grid-cols-5">
+            <ul className="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-4">
               {group.items.map((item) => (
                 <li key={item}>
                   <TechIcon name={item} />
@@ -104,7 +103,7 @@ function TechIcon({ name }: { name: string }) {
   const FallbackIcon = config?.fallback ?? fallbackIcon;
 
   return (
-    <span className="group flex min-h-24 flex-col items-center justify-center gap-3 border border-white/10 bg-[#0f1115] p-3 text-center transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:bg-white/[0.06]">
+    <span className="group flex min-h-24 flex-col items-center justify-center gap-3 border border-white/10 bg-white/[0.025] p-3 text-center transition hover:border-white/25 hover:bg-white/[0.05]">
       <span className="flex h-10 w-10 items-center justify-center">
         {config?.src ? (
           <img
@@ -122,7 +121,7 @@ function TechIcon({ name }: { name: string }) {
           />
         )}
       </span>
-      <span className="text-xs font-medium leading-4 text-slate-300">
+      <span className="text-xs font-medium leading-4 text-slate-400">
         {name}
       </span>
     </span>

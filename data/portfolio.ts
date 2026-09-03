@@ -65,7 +65,7 @@ export const profile = {
   name: "Adam Nguyen",
   title: "Software Engineer · Final-year IT student",
   summary:
-    "Final-year UTS IT student and Software Engineer at NexStox, software development outsourcing, fintech, and agriculture technology.",
+    "Final-year IT student with one year of professional experience across full-stack development and data engineering.",
   email: "adamnguyxn.au@gmail.com",
   github: "https://github.com/adampharrels",
   linkedin: "https://www.linkedin.com/in/adam-nguyen-2517222a0/",
@@ -83,16 +83,17 @@ export const profile = {
 export const capabilityGroups: CapabilityGroup[] = [
   {
     title: "Programming languages",
-    items: ["TypeScript", "Python", "Java", "SQL"],
+    items: ["TypeScript", "JavaScript", "Python", "Java", "SQL"],
   },
   {
     title: "Frontend",
-    items: ["React", "Next.js", "Angular", "Tailwind CSS"],
+    items: ["React", "Next.js", "Angular", "Tailwind CSS", "Vite"],
   },
   {
     title: "Backend",
     items: [
       "FastAPI",
+      "Spring Boot",
       "Node.js",
       "Express.js",
       "Hono.js",
@@ -106,27 +107,27 @@ export const capabilityGroups: CapabilityGroup[] = [
   },
   {
     title: "Tools and platforms",
-    items: ["Docker", "Git", "GitHub Actions", "Azure DevOps", "Vite", "Gradle"],
+    items: ["Docker", "Git", "GitHub Actions", "Azure DevOps", "Gradle"],
   },
 ];
 
 export const experiences: Experience[] = [
   {
     company: "NexStox",
-    context:
-      "Fintech product work across a cryptocurrency exchange, asset-management platform and cryptocurrency-based game.",
+    context: "Full-time fintech software engineering internship.",
     roles: [
-      { title: "Software Engineer", period: "June 2026 - Present" },
-      { title: "Software Engineer Intern", period: "January 2026 - June 2026" },
+      {
+        title: "Software Engineer Intern",
+        period: "January 2026 - Present",
+      },
     ],
     bullets: [
-      "Built features for candlestick charts, order history, funding, wallet and administrative workflows.",
-      "Migrated a high-traffic game frontend from Next.js to Vite, reducing build time by approximately 40-60%.",
-      "Contributed to integrating a new external trading venue supporting a tokenized-asset product line by implementing provider-specific readiness checks in the order-routing backend, so an outage in one provider would not block orders routed through another.",
-      "Built reusable components and resolved inconsistent behaviours across transaction, wallet and admin surfaces.",
-      "Developed features for an admin panel that cut publishing time by approximately 50% and reduced reliance on frontend developers, enabling non-technical staff to manage users, transactions, and cryptocurrency and token listings.",
-      "Worked across development, staging, manual validation and release verification.",
-      "Reviewed competing exchange experiences and proposed usability improvements outside the formal implementation scope.",
+      "Built production React and TypeScript interfaces across trading, transaction, wallet and administrative workflows, integrating REST APIs and reusable UI components for a live financial platform.",
+      "Owned the migration of a high-traffic game from Next.js to Vite, improving build time by approximately 50%.",
+      "Contributed to a new liquidity provider integration supporting 100+ tokenised securities by implementing provider-specific health checks in the order-routing Node.js backend, preventing an outage in one provider from blocking orders routed through another.",
+      "Built an admin panel that cut publishing time by approximately 50% and reduced reliance on frontend developers, enabling staff to manage users, transactions, and cryptocurrency and token listings.",
+      "Fixed real-time Order Book flicker by moving WebSocket subscription ownership from UI components to the page-level data layer, removing duplicate subscriptions and stabilising live updates.",
+      "Resolved approximately 90% of critical mobile layout bugs by implementing responsive UI controls and breakpoint-specific positioning across homepage, trading and wallet flows.",
     ],
     technologies: [
       "TypeScript",
@@ -139,36 +140,9 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    company: "TMA Solutions Australia",
-    context:
-      "Software consulting internship focused on workforce planning systems, administration workflows and AI-assisted internal tooling.",
-    roles: [
-      {
-        title: "Software Engineer Intern",
-        period: "October 2025 - January 2026",
-      },
-    ],
-    bullets: [
-      "Built a workforce-planning system using Next.js, Hono.js, SQL and REST APIs.",
-      "Developed skill-matrix and employee-management workflows for resource planning.",
-      "Integrated an LLM API to summarise employee strengths and development areas.",
-      "Refactored Angular administration workflows and reduced duplicated logic.",
-      "Contributed to a multilingual voice chatbot using speech recognition and embedding-based retrieval.",
-    ],
-    technologies: [
-      "TypeScript",
-      "Next.js",
-      "Hono.js",
-      "SQL",
-      "Angular",
-      "REST APIs",
-      "LLM APIs",
-    ],
-  },
-  {
     company: "StevTech",
     context:
-      "Data engineering internship supporting drone-imagery preparation for downstream computer-vision weed-detection workflows.",
+      "Part-time UTS Industry Collaboration supporting drone-imagery preparation for downstream computer-vision workflows.",
     roles: [
       {
         title: "Data Engineer Intern",
@@ -176,9 +150,9 @@ export const experiences: Experience[] = [
       },
     ],
     bullets: [
-      "Reduced drone imagery preparation time from hours to seconds by building a Python ETL pipeline that processes multi-sensor datasets up to ∼50GB per batch for downstream computer vision models.",
-      "Designed a class-based processor that standardised inconsistent metadata across multiple drones, allowing additional data sources to be integrated without changing existing processing logic.",
-      "Presented product demos and technical outcomes to stakeholders, prospective investors, and university academics, translating complex technical concepts into clear insights for non-technical audiences.",
+      "Cut drone imagery preparation time from approximately 2 hours to less than 1 minute by building a Python ETL pipeline processing multi-sensor datasets up to approximately 50GB per batch for downstream computer vision models.",
+      "Enabled support for new drone sources without modifying existing processing logic by designing the pipeline with a class-based architecture that standardised inconsistent metadata across sources.",
+      "Presented product demos and technical outcomes to stakeholders, prospective investors, and government officials, translating complex technical concepts into clear insights for non-technical audiences.",
     ],
     technologies: [
       "Python",
@@ -187,6 +161,30 @@ export const experiences: Experience[] = [
       "exiftool",
       "FastAPI",
       "SQLite",
+    ],
+  },
+  {
+    company: "TMA Solutions Australia",
+    context: "Full-time full-stack software engineering internship.",
+    roles: [
+      {
+        title: "Software Engineer Intern - Full-stack",
+        period: "October 2025 - January 2026",
+      },
+    ],
+    bullets: [
+      "Built an internal workforce planning system using Next.js, Hono.js, and PostgreSQL, designing database schemas and API endpoints for skills matrix, resource allocation, and project analytics.",
+      "Refactored an Angular candidate-management dashboard into reusable components, reducing duplicated logic by approximately 40%, with Jasmine tests to validate component behaviour.",
+      "Reduced manual interactions by developing a multilingual voice-enabled chatbot for machine support and improved accuracy to 90% by implementing semantic similarity search with vector embeddings.",
+    ],
+    technologies: [
+      "TypeScript",
+      "Next.js",
+      "Hono.js",
+      "PostgreSQL",
+      "Angular",
+      "Jasmine",
+      "Vector embeddings",
     ],
   },
 ];

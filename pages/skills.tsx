@@ -10,7 +10,7 @@ export default function SkillsPage(): JSX.Element {
       title="Skills"
       description="Technical skills for Adam Nguyen across programming languages, frontend, backend, tools and platforms."
     >
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
         <SectionHeading
           eyebrow="Skills"
           title="Technical stack"

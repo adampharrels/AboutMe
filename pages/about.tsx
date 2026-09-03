@@ -80,14 +80,14 @@ export default function AboutPage(): JSX.Element {
       title="About"
       description="About Adam Nguyen, a Sydney-based software engineer and final-year UTS Bachelor of Information Technology student."
     >
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-300">
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
           About
         </p>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-          <aside className="h-fit border border-white/10 bg-white/[0.035] p-5">
-            <dl className="space-y-5">
+          <aside className="h-fit border-t border-white/10 pt-5">
+            <dl className="divide-y divide-white/10">
               {[
                 ["Education", profile.education],
                 ["Major", profile.major],
@@ -96,7 +96,7 @@ export default function AboutPage(): JSX.Element {
                 ["Location", profile.location],
                 ["Current role", "Software Engineer at NexStox"],
               ].map(([label, value]) => (
-                <div key={label}>
+                <div key={label} className="py-4 first:pt-0">
                   <dt className="text-xs uppercase tracking-[0.14em] text-slate-500">
                     {label}
                   </dt>
@@ -131,18 +131,18 @@ export default function AboutPage(): JSX.Element {
             </p>
             <p>
               Outside engineering, I’m drawn to classical guitar, public
-              speaking and travel. I also have a soft spot for writers and
-              interviewers who take people seriously, including Anthony
-              Bourdain, mostly for the curiosity and directness rather than the
-              mythology.
+              speaking and travel. I also admire people with good storytelling,
+              and have a soft spot for writers and interviewers who take people
+              seriously, including Anthony Bourdain, mostly for the curiosity
+              and directness rather than the mythology.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-black/20 px-4 py-14 sm:px-6 sm:py-16">
-        <div className="mx-auto max-w-6xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-300">
+      <section className="border-y border-white/10 px-4 py-14 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
             Hobbies
           </p>
           <div className="mt-8 grid gap-5 lg:grid-cols-[0.42fr_0.58fr]">
@@ -165,15 +165,15 @@ export default function AboutPage(): JSX.Element {
                     className={[
                       "grid grid-cols-[2.75rem_1fr] gap-3 border p-4 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400",
                       selected
-                        ? "border-emerald-300/60 bg-emerald-300/10"
-                        : "border-white/10 bg-[#12151b] hover:border-white/25",
+                        ? "border-white/25 bg-white/[0.045]"
+                        : "border-white/10 bg-transparent hover:border-white/25",
                     ].join(" ")}
                   >
                     <span
                       className={[
                         "flex h-11 w-11 items-center justify-center border",
                         selected
-                          ? "border-emerald-300/40 text-emerald-200"
+                          ? "border-white/20 text-emerald-300"
                           : "border-white/10 text-slate-300",
                       ].join(" ")}
                     >
@@ -192,7 +192,7 @@ export default function AboutPage(): JSX.Element {
               })}
             </div>
 
-            <article className="min-h-[20rem] border border-white/10 bg-[#12151b] p-6">
+            <article className="min-h-[20rem] border-t border-white/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
@@ -202,7 +202,7 @@ export default function AboutPage(): JSX.Element {
                     {selectedHobby.title}
                   </h2>
                 </div>
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-emerald-300/30 bg-emerald-300/10 text-emerald-200">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-white/10 text-emerald-300">
                   <SelectedIcon size={24} aria-hidden="true" />
                 </div>
               </div>
@@ -212,7 +212,10 @@ export default function AboutPage(): JSX.Element {
               </p>
               <ul className="mt-6 space-y-3 border-t border-white/10 pt-5 text-sm leading-6 text-slate-300">
                 {selectedHobby.details.map((detail) => (
-                  <li key={detail} className="grid grid-cols-[0.75rem_1fr] gap-3">
+                  <li
+                    key={detail}
+                    className="grid grid-cols-[0.75rem_1fr] gap-3"
+                  >
                     <span
                       className="mt-2 h-1.5 w-1.5 bg-emerald-300"
                       aria-hidden="true"

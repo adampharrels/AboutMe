@@ -46,7 +46,7 @@ export default function ProjectCaseStudy({
   if (!caseStudy) {
     return (
       <Layout title={project.title} description={project.summary}>
-        <section className="mx-auto max-w-4xl px-4 py-14 sm:px-6 sm:py-20">
+        <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
           <Link
             href="/projects"
             className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300"
@@ -67,7 +67,7 @@ export default function ProjectCaseStudy({
 
   return (
     <Layout title={`${project.title} Case Study`} description={project.summary}>
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
         <Link
           href="/projects"
           className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
@@ -82,8 +82,8 @@ export default function ProjectCaseStudy({
             title={project.title}
             description={project.summary}
           />
-          <aside className="h-fit border border-white/10 bg-white/[0.035] p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-300">
+          <aside className="h-fit border-t border-white/10 pt-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
               Stack
             </p>
             <div className="mt-4">
@@ -103,17 +103,17 @@ export default function ProjectCaseStudy({
       </section>
 
       {project.images && project.images.length > 0 && (
-        <section className="mx-auto max-w-6xl px-4 pb-14 sm:px-6">
+        <section className="mx-auto max-w-5xl px-4 pb-14 sm:px-6">
           <div className="grid gap-5 md:grid-cols-2">
             {project.images.map((image) => (
               <figure
                 key={image.src}
-                className="border border-white/10 bg-[#12151b]"
+                className="border-t border-white/10 pt-4"
               >
                 <button
                   type="button"
                   onClick={() => setSelectedImage(image)}
-                  className="block w-full border-b border-white/10 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
+                  className="block w-full overflow-hidden border border-white/10 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-400"
                   aria-label={`Open larger screenshot: ${image.caption}`}
                 >
                   <img
@@ -123,7 +123,7 @@ export default function ProjectCaseStudy({
                     loading="lazy"
                   />
                 </button>
-                <figcaption className="p-3 text-sm text-slate-400">
+                <figcaption className="pt-3 text-sm text-slate-500">
                   {image.caption}. Click to enlarge.
                 </figcaption>
               </figure>
@@ -132,8 +132,8 @@ export default function ProjectCaseStudy({
         </section>
       )}
 
-      <section className="border-y border-white/10 bg-black/20 px-4 py-14 sm:px-6 sm:py-16">
-        <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-2">
+      <section className="border-y border-white/10 px-4 py-14 sm:px-6 sm:py-16">
+        <div className="mx-auto grid max-w-5xl gap-x-10 gap-y-8 lg:grid-cols-2">
           <CaseBlock title="Overview" body={caseStudy.overview} />
           <CaseBlock title="Problem" body={caseStudy.problem} />
           <CaseBlock title="Users" body={caseStudy.users} />
@@ -141,7 +141,7 @@ export default function ProjectCaseStudy({
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-5 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-2">
+      <section className="mx-auto grid max-w-5xl gap-x-10 gap-y-8 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-2">
         <CaseList
           title="Main capabilities"
           items={caseStudy.mainCapabilities}
@@ -202,7 +202,7 @@ export default function ProjectCaseStudy({
 
 function CaseBlock({ title, body }: { title: string; body: string }) {
   return (
-    <section className="border border-white/10 bg-white/[0.035] p-5">
+    <section className="border-t border-white/10 pt-5">
       <h2 className="text-xl font-semibold text-white">{title}</h2>
       <p className="mt-3 text-sm leading-7 text-slate-300">{body}</p>
     </section>
@@ -211,13 +211,13 @@ function CaseBlock({ title, body }: { title: string; body: string }) {
 
 function CaseList({ title, items }: { title: string; items: string[] }) {
   return (
-    <section className="border border-white/10 bg-white/[0.035] p-5">
+    <section className="border-t border-white/10 pt-5">
       <h2 className="text-xl font-semibold text-white">{title}</h2>
       <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
         {items.map((item) => (
           <li key={item} className="grid grid-cols-[0.85rem_1fr] gap-3">
             <span
-              className="mt-2 h-1.5 w-1.5 bg-emerald-300"
+              className="mt-2 h-1 w-1 bg-emerald-300"
               aria-hidden="true"
             />
             <span>{item}</span>
