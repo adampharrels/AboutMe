@@ -56,7 +56,7 @@ export const site = {
   title: "Adam Nguyen | Software Engineer",
   description:
     "Portfolio of Adam Nguyen, a Sydney-based software engineer and final-year UTS IT student working across fintech, full-stack development, data and AI.",
-  url: "https://adampharrels.github.io/AboutMe/",
+  url: "https://adamnguyen.me/",
 };
 
 export const assetBasePath = process.env.BASE_PATH || "";
@@ -539,7 +539,7 @@ export const projects: Project[] = [
     capabilities: [
       "Typed project, experience and profile data.",
       "Reusable cards, layout and case-study pages.",
-      "Static export configuration for GitHub Pages under the /AboutMe/ subpath.",
+      "Static export configuration for GitHub Pages with a custom domain.",
     ],
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     featured: false,
@@ -547,7 +547,7 @@ export const projects: Project[] = [
     links: [
       {
         label: "Open Portfolio Website",
-        href: "https://adampharrels.github.io/AboutMe/",
+        href: "https://adamnguyen.me/",
         kind: "demo",
       },
       {
