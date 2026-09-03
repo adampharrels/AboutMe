@@ -70,7 +70,7 @@ export const profile = {
   github: "https://github.com/adampharrels",
   linkedin: "https://www.linkedin.com/in/adam-nguyen-2517222a0/",
   resume:
-    "https://drive.google.com/file/d/1U6Xfdu_xvLYBmELz0DbQ0RMSmo9x7W95/view?usp=sharing",
+    "https://drive.google.com/file/d/1S0b_NbmyVDz_ffdBlYXz9FzsKS68Wdjq/view?usp=sharing",
   location: "Sydney, Australia",
   graduation: "Graduating December 2026",
   availability: "Open to graduate and junior opportunities from late 2026",
