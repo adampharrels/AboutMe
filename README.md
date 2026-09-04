@@ -2,7 +2,7 @@
 
 Personal portfolio for Adam Nguyen, a Sydney-based software engineer and final-year UTS Bachelor of Information Technology student working across fintech, full-stack development, data and AI.
 
-Live site: https://adampharrels.github.io/AboutMe/
+Live site: https://adamnguyen.me
 
 ## Screenshot
 
