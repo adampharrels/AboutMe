@@ -27,7 +27,7 @@ const timelineItems = [
     type: "work",
   },
   {
-    period: "Feb 2024 - Dec 2026",
+    period: "Feb 2024 - Present",
     title: "Bachelor of Information Technology",
     place: "University of Technology Sydney",
     description: "Software Development major with Data Analytics and AI.",
@@ -43,7 +43,7 @@ export default function Home(): JSX.Element {
           <div>
             <p className="inline-flex items-center gap-2 text-sm text-slate-500">
               <MapPin size={15} aria-hidden="true" />
-              {profile.location} · {profile.graduation}
+              {profile.location}
             </p>
             <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-tight tracking-normal text-white sm:text-5xl">
               {profile.name}

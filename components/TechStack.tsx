@@ -59,9 +59,6 @@ const techIcons: Record<string, TechIconConfig> = {
   "GitHub Actions": {
     src: `${deviconBase}/githubactions/githubactions-original.svg`,
   },
-  "Azure DevOps": {
-    src: `${deviconBase}/azuredevops/azuredevops-original.svg`,
-  },
   Vite: { src: `${deviconBase}/vitejs/vitejs-original.svg` },
   Gradle: { src: `${deviconBase}/gradle/gradle-original.svg` },
 };

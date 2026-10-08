@@ -78,7 +78,7 @@ export default function AboutPage(): JSX.Element {
   return (
     <Layout
       title="About"
-      description="About Adam Nguyen, a Sydney-based software engineer and final-year UTS Bachelor of Information Technology student."
+      description="About Adam Nguyen, a Sydney-based software engineer and UTS Bachelor of Information Technology student."
     >
       <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 sm:py-20">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
@@ -92,9 +92,8 @@ export default function AboutPage(): JSX.Element {
                 ["Education", profile.education],
                 ["Major", profile.major],
                 ["Sub-major", profile.subMajor],
-                ["Graduation", profile.graduation],
                 ["Location", profile.location],
-                ["Current role", "Software Engineer at NexStox"],
+                ["Current role", "Software Engineer Intern at NexStox"],
               ].map(([label, value]) => (
                 <div key={label} className="py-4 first:pt-0">
                   <dt className="text-xs uppercase tracking-[0.14em] text-slate-500">
@@ -110,11 +109,10 @@ export default function AboutPage(): JSX.Element {
 
           <div className="space-y-6 text-base leading-8 text-slate-300">
             <p>
-              I’m a final-year Bachelor of Information Technology student at
-              UTS, majoring in Software Development with a Data Analytics and AI
-              sub-major. Professionally, I’ve worked across software
-              development outsourcing, fintech,
-              and agriculture technology.
+              I’m a Bachelor of Information Technology student at UTS, majoring
+              in Software Development with a Data Analytics and AI sub-major.
+              Professionally, I’ve worked across software development
+              outsourcing, fintech, and agriculture technology.
             </p>
             <p>
               My strongest interests sit around software, fintech, data and

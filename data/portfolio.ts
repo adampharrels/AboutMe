@@ -55,7 +55,7 @@ export type CapabilityGroup = {
 export const site = {
   title: "Adam Nguyen | Software Engineer",
   description:
-    "Portfolio of Adam Nguyen, a Sydney-based software engineer and final-year UTS IT student working across fintech, full-stack development, data and AI.",
+    "Portfolio of Adam Nguyen, a Sydney-based software engineer and UTS IT student working across fintech, full-stack development, data and AI.",
   url: "https://adamnguyen.me/",
 };
 
@@ -63,17 +63,16 @@ export const assetBasePath = process.env.BASE_PATH || "";
 
 export const profile = {
   name: "Adam Nguyen",
-  title: "Software Engineer · Final-year IT student",
+  title: "Software Engineer · IT student",
   summary:
-    "Final-year IT student with one year of professional experience across full-stack development and data engineering.",
+    "IT student with one year of professional experience across full-stack development and data engineering.",
   email: "adamnguyxn.au@gmail.com",
   github: "https://github.com/adampharrels",
   linkedin: "https://www.linkedin.com/in/adam-nguyen-2517222a0/",
   resume:
-    "https://drive.google.com/file/d/1S0b_NbmyVDz_ffdBlYXz9FzsKS68Wdjq/view?usp=sharing",
+    "https://drive.google.com/file/d/1I4y9m0O-5pbewqOF1InGA1E2FVAhcadf/view?usp=sharing",
   location: "Sydney, Australia",
-  graduation: "Graduating December 2026",
-  availability: "Open to graduate and junior opportunities from late 2026",
+  availability: "Open to graduate and junior opportunities",
   mobility: "Open to Sydney and Melbourne opportunities",
   education: "Bachelor of Information Technology at UTS",
   major: "Software Development major",
@@ -107,7 +106,7 @@ export const capabilityGroups: CapabilityGroup[] = [
   },
   {
     title: "Tools and platforms",
-    items: ["Docker", "Git", "GitHub Actions", "Azure DevOps", "Gradle"],
+    items: ["Docker", "Git", "GitHub Actions", "Gradle"],
   },
 ];
 
@@ -125,9 +124,12 @@ export const experiences: Experience[] = [
       "Built production React and TypeScript interfaces across trading, transaction, wallet and administrative workflows, integrating REST APIs and reusable UI components for a live financial platform.",
       "Owned the migration of a high-traffic game from Next.js to Vite, improving build time by approximately 50%.",
       "Contributed to a new liquidity provider integration supporting 100+ tokenised securities by implementing provider-specific health checks in the order-routing Node.js backend, preventing an outage in one provider from blocking orders routed through another.",
-      "Built an admin panel that cut publishing time by approximately 50% and reduced reliance on frontend developers, enabling staff to manage users, transactions, and cryptocurrency and token listings.",
+      "Built provider-specific charting APIs in a Spring Boot backend that support 200+ trading pairs with different timeframes across 3 liquidity providers.",
+      "Resolved data inconsistencies in a MongoDB-based game service by implementing a Node.js migration that corrected invalid timestamps and removed duplicate records while preserving the preferred entries.",
+      "Developed features that cut publishing time by approximately 50% and reduced reliance on frontend developers, enabling staff to manage users, transactions, and cryptocurrency and token listings.",
       "Fixed real-time Order Book flicker by moving WebSocket subscription ownership from UI components to the page-level data layer, removing duplicate subscriptions and stabilising live updates.",
-      "Resolved approximately 90% of critical mobile layout bugs by implementing responsive UI controls and breakpoint-specific positioning across homepage, trading and wallet flows.",
+      "Owned fixes end-to-end from root-cause investigation to testing, staging and production release.",
+      "Worked with engineers, executives and product managers to clarify requirements, review workflows, test solutions and deliver improvements across development, staging and production environments.",
     ],
     technologies: [
       "TypeScript",
@@ -135,8 +137,8 @@ export const experiences: Experience[] = [
       "Next.js",
       "Vite",
       "Node.js",
+      "Spring Boot",
       "REST APIs",
-      "Azure DevOps",
     ],
   },
   {
@@ -347,6 +349,34 @@ export const projects: Project[] = [
       outcome:
         "A practical full-stack fintech product that turns a static watchlist into a daily review workflow, combining user-owned notes, market signals, news-aware triggers, persistence and clear change summaries.",
     },
+  },
+  {
+    slug: "isthismlm",
+    title: "IsThisMLM",
+    category: ["Data/AI", "Machine learning"],
+    summary:
+      "A text classifier that identifies MLM recruitment messages and separates them from ordinary personal messages and spam.",
+    capabilities: [
+      "Achieved approximately 90% precision, 83% recall and 0.90 PR-AUC using TF-IDF and logistic regression.",
+      "Used 5-fold cross-validation to evaluate model performance.",
+      "Improved precision from approximately 87% to 90% by inspecting model coefficients, identifying misleading writing-style signals and refining preprocessing to reduce shortcut learning.",
+    ],
+    technologies: [
+      "Python",
+      "scikit-learn",
+      "TF-IDF",
+      "Logistic Regression",
+      "pandas",
+      "NumPy",
+    ],
+    featured: true,
+    links: [
+      {
+        label: "View IsThisMLM repository",
+        href: "https://github.com/adampharrels/IsThisMLM",
+        kind: "repository",
+      },
+    ],
   },
   {
     slug: "nutrisnap",

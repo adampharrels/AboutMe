@@ -10,7 +10,7 @@ export default function CallToAction() {
         </p>
         <h2 className="mt-3 max-w-2xl text-2xl font-semibold leading-tight text-white">
           I’m open to graduate and junior software, data and technology
-          opportunities from late 2026.
+          opportunities.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400">
           Send me an email or connect with me on LinkedIn. I’m especially
